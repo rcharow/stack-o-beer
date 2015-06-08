@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
 	price: {Type: Number, required: true},
 	photo: {Type: String},
 	brewery: {Type: mongoose.Schema.Type.ObjectId, ref: 'Brewery'},
-	rating: {Type: Number},
+	rating: {Type: Number, required:true, default: 0},
 	packaging: {
 		size: {Type: Number, required: true},
 		units: {Type: String, required: true},
@@ -20,3 +20,5 @@ var schema = new mongoose.Schema({
 
 })
 
+
+mongoose.model('Beer', schema);

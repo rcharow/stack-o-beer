@@ -1,0 +1,62 @@
+step 1: listing product
+models for products
+
+model structure:
+    Beer schema: 
+        beer_name string
+        brew_type string
+        description string
+        abv float
+        price float
+        brewery string
+        photo string
+        rating num
+        quantity num
+        packaging object(size:quantity)
+
+    Brewery Schema
+        name string
+        location string
+        website string
+        brews array of strings
+        founding_year num
+        rating num
+
+    user schema
+        name string
+        password string
+        email string 
+        address string
+        payments array of strings
+        order ids arry of nums
+        role boolean
+    
+    order history
+        user num
+        price num
+        date num
+        items object(item: quantity)
+        status string
+
+    review
+        beer id num
+        user id num
+        ratings num
+        comments string
+
+    categories
+        category string
+        beers array
+        description string
+
+other back end functionality
+    authentication:
+        o-auth facebook/google
+    email machine
+    admin things
+        add/remove items
+        general model adjustment
+        edit categories
+        edit availability
+        can view/edit orders
+        admin power
