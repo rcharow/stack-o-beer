@@ -4,7 +4,14 @@ module.exports = router;
 
 router.use('/members', require('./members'));
 
+
 router.use('/beer', require('./beer/beerRoute'))
+
+router.post('/signup',function(req,res,next){
+
+    res.send(200)
+})
+
 
 // Make sure this is after all of
 // the registered routes!
