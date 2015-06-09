@@ -23,4 +23,4 @@ var schema = new mongoose.Schema({
 })
 
 
-mongoose.model('Beer', schema);
+module.exports = mongoose.model('Beer', schema);

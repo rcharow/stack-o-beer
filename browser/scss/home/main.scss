@@ -10,3 +10,16 @@
   }
 }
 
+ul.side-nav.fixed {
+  overflow: hidden;
+}
+
+.side-nav.fixed
+{
+  left: 0;
+  position: fixed;
+}
+
+ul.side-nav.fixed li {
+  line-height: 44px;
+}

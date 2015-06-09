@@ -5,4 +5,4 @@ var schema = new mongoose.Schema({
 	id: {Type: Number, required: true}
 })
 
-mongoose.model('Category', schema);
+module.exports = mongoose.model('Category', schema);
