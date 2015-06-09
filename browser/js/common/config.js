@@ -1,25 +1,26 @@
-app.config(function($stateProvider,$locationProvider) {
-	$stateProvider.state('home'{
+app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
+	$stateProvider.state('browse',{
 		url: '/',
-		templateUrl: '/templates/home.html'//,
+		templateUrl: '/js/common/templates/home.html'//,
 		// controller:
 	})
 	$stateProvider.state('cart',{
 		url: '/cart',
-		templateUrl: '/templates/cart.html'//,
+		templateUrl: '/js/common/templates/cart.html'//,
 		// controller:
 	})
 	$stateProvider.state('productDetail',{
 		url: '/product',
-		templateUrl: '/templates/product.html'//,
+		templateUrl: '/js/common/templates/product.html'//,
 		// controller:
 	})
 	
 	$stateProvider.state('cart.checkout',{
-		url: '/cart/checkout',
-		templateUrl: '/templates/checkout.html'//,
+		url: '/js/cart/checkout',
+		templateUrl: 'js/common/templates/checkout.html'//,
 		// controller:
 	})
 	
+	$urlRouterProvider.otherwise('/')
 	
 })
