@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 
 var schema = new mongoose.Schema({
-	cat_name: {Type: String, required: true},
-	id: {Type: Number, required: true}
+	cat_name: {type: String, required: true},
+	id: {type: Number, required: true}
 })
 
 module.exports = mongoose.model('Category', schema);
