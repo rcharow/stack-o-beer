@@ -1,8 +1,8 @@
 app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 	$stateProvider.state('browse',{
 		url: '/',
-		templateUrl: '/js/common/templates/home.html'//,
-		// controller:
+		templateUrl: '/js/common/templates/browse.html'//,
+		controller:
 	})
 	$stateProvider.state('cart',{
 		url: '/cart',
@@ -20,6 +20,15 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 		templateUrl: 'js/common/templates/checkout.html'//,
 		// controller:
 	})
+
+		$stateProvider.state('browse.sidebar',{
+		url: '/js/cart/checkout',
+		templateUrl: 'js/common/templates/checkout.html'//,
+		// controller:
+	})
+
+
+
 	
 	$urlRouterProvider.otherwise('/')
 	
