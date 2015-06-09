@@ -5,3 +5,5 @@ var schema = new mongoose.Schema = ({
 	cat_id: {Type: Number, required: true},
 	style_name: {Type: String, required: true}
 })
+
+module.exports = mongoose.model('Style', schema);

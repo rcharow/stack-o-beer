@@ -11,4 +11,4 @@ var schema = new mongoose.Schema({
 	status: {Type: String, required: true},
 
 })
-mongoose.model('Order', schema);
+module.exports = mongoose.model('Order', schema);

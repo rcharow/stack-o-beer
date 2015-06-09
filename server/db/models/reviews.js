@@ -7,4 +7,4 @@ var schema = new mongoose.Schema({
 	comment: {Type: String, required: true}
 })
 
-mongoose.model('Review', schema);
+module.exports = mongoose.model('Review', schema);
