@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var schema = new mongoose.Schema({
 	name: {Type: String, required: true},
 	cat_id: {Type: String, required: true},
-	style_id: {Type: String, required: true}
+	style_id: {Type: String, required: true},
 	descript: {Type: String, required: true},
 	abv: {Type: Number, required: true},
 	price: {Type: Number, required: true, default: Math.floor(Math.random()*35)},
@@ -23,4 +23,8 @@ var schema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Beer', schema);
+var Beer = mongoose.model('Beer', schema);
+
+module.exports = {
+	Beer: Beer
+}

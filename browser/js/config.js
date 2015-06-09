@@ -2,7 +2,6 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 	$stateProvider.state('browse',{
 		url: '/',
 		templateUrl: '/js/common/templates/home.html'//,
-		// controller:
 	})
 	$stateProvider.state('cart',{
 		url: '/cart',
