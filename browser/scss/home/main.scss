@@ -23,3 +23,27 @@ ul.side-nav.fixed {
 ul.side-nav.fixed li {
   line-height: 44px;
 }
+
+
+.browse-list {
+  list-style-type: none;
+}
+
+.browse-item {
+   width: 20%;
+   margin: 20px;
+
+  p {
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    display: inline-block;
+    // float: left;
+  }
+}
