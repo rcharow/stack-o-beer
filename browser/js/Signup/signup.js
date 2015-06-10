@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('signupCtrl', function ($scope, signUpFactory, $state) {
+app.controller('signupCtrl', function ($scope, signUpFactory, $state, AuthService) {
 
     $scope.login = {};
     $scope.error = null;
@@ -17,7 +17,7 @@ app.controller('signupCtrl', function ($scope, signUpFactory, $state) {
 
         $scope.error = null;
 
-        signUpFactory.signup(info).then(function () {
+        signUpFactory.signup(info).then(function (err,user) {
             $state.go('login');
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
