@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 var Beer = mongoose.model('Beer')
 var Category = mongoose.model('Category')
 
+
 function getObjectParams(paramObj){
 	var params = []
 	for(var key in paramObj){
@@ -17,24 +18,29 @@ function getObjectParams(paramObj){
 }
 
 router.get('/categories', function(req, res){
-	console.log('YOOOOOOOOO');
+	console.log(req.params);
 
-	Category.find().exec().then(function(cats){
+	Category.find({}).exec().then(function(cats){
 		console.log('cats',cats);
-		res.json(cats)
+		res.send(cats)
 	},function(err){
 		res.status(500).end()
 	})
 
 })
 
-router.get('/categories/:categoryId',function(req,res){
-	var params = getObjectParams(req.params.categoryId)
 
-	Beer.find({cat_id: { $in: params } })
+
+router.get('/categories/:categoryId',function(req,res){
+	console.log('YOOO')
+	console.log('Params', req.params.categoryId);
+	console.log(typeof req.params.caregoryID)
+
+	Beer.find({cat_id: req.params.categoryId })
 	.exec()
 	.then(function(beers){
-		res.json(beers)
+		console.log(beers)
+		res.send(beers)
 	},function(err){
 		res.status(500).end()
 	})
