@@ -4,12 +4,15 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 		controller: "BrowseController"
 	})
 
-	$stateProvider.state('home.main',{
+	$stateProvider.state('home.all',{
 		url:'/browse',
 		templateUrl: '/js/common/templates/category.html'
 	
 	})
-
+    $stateProvider.state('home.detailed',{
+        url:'/product',
+        templateUrl: '/js/common/templates/productDetails.html'
+    })
 	$stateProvider.state('cart',{
 		url: '/cart',
 		templateUrl: '/js/common/templates/cart.html'//,

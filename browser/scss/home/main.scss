@@ -18,8 +18,18 @@ ul.side-nav.fixed {
 {
   left: 0;
   position: fixed;
+  height:800px;
 }
 
 ul.side-nav.fixed li {
   line-height: 44px;
+}
+
+.product
+{
+  img{
+    display: inline-block;
+    float: left;
+    margin: 5%;
+  }
 }
