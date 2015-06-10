@@ -1,14 +1,16 @@
 var mongoose = require('mongoose')
 
+var orders = 'Pending Fulfilled Cancelled Delayed'.split(' ')
+
 var schema = new mongoose.Schema({
-	userId: {Type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-	date: {Type: Date, required: true, default: Date.now},
+	userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+	date: {type: Date, required: true, default: Date.now},
 	items: [{
-		productId: {Type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
-		price: {Type: Number, required: true},
-		quantity: {Type: Number, required: true}
+		productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
+		price: {type: Number, required: true},
+		quantity: {type: Number, required: true}
 	}],
-	status: {Type: String, required: true}
+	status: {type: String, required: true, enum: orders}
 
 })
 module.exports = mongoose.model('Order', schema);
