@@ -6,4 +6,4 @@ var schema = new mongoose.Schema ({
 	style_name: {type: String, required: true}
 })
 
-module.exports = mongoose.model('Style', schema);
+mongoose.model('Style',schema)

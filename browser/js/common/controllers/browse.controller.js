@@ -1,16 +1,6 @@
-app.controller('BrowseController',function ($scope){
-	// $scope.beers = 
-	// [
-	// 	{
-	// 		category: 'Lager',
-	// 			beers: [
-	// 				{
-	// 					beer_name:,
-	// 					brewery:,
-	// 					descript:
-	// 				}
-	// 			]	
-	// 	}
-	// ]
+app.controller('BrowseController',function ($scope, DisplayBeerFactory){
+	$scope.beers = DisplayBeerFactory.getBeerById('55760355bc48bd122edf463c')
+
+
 })
 
