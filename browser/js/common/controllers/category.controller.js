@@ -1,12 +1,16 @@
-app.controller('BrowseController',function($scope, SideBarFactory){
-		console.log("IN SIDEBAR CONTROLLER");
+app.controller('BrowseController',function($scope, SideBarFactory, DisplayBeerFactory){
 	
-		console.log('SideBarFactory', SideBarFactory)
 		
-		$scope.categories = "Hey";
 		SideBarFactory.getBeerCategories().then(function(categories){
-			console.log('In categoryController', categories);
+					$scope.categories = categories;
+
 		})
 	
+		$scope.goToCategory= function(categoryID){
+			DisplayBeerFactory.getTypeBeer(categoryID).then(function(beers){
 
+				$scope.beers= beers
+				return
+			})
+		}
 })
