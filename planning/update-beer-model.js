@@ -84,20 +84,36 @@ var Q = require('q')
 // 	console.log('done',beers[0])
 // }).then(null,console.error)
 
+// Beer.find().exec().then(function(beers){
+// 	var beerPromise = []
+// 	beers.forEach(function(beer){
+// 		var price = Number((Math.random()*20).toFixed(2))
+// 		var stock = Math.floor(Math.random()*100)
+// 		var rating = Math.floor(Math.random()*5)
+// 		beer.price = price
+// 		beer.stock = stock
+// 		beer.rating = rating
+// 		beer.save()
+// 	})
+// })
+
+
+// Beer.find().exec().then(function(beers){
+// 	beers.forEach(function(beer){
+// 		var price =(Math.random()*20).toFixed(2)
+// 		console.log(beer.price)
+// 		beer.price = price
+// 		beer.save()
+// 	})
+// })
+
 Beer.find().exec().then(function(beers){
-	var beerPromise = []
 	beers.forEach(function(beer){
-		var price = Number((Math.random()*20).toFixed(2))
-		var stock = Math.floor(Math.random()*100)
-		var rating = Math.floor(Math.random()*5)
-		beer.price = price
-		beer.stock = stock
-		beer.rating = rating
+		temp = beer.abv
+		console.log(temp.toFixed(2))
+		beer.abv = temp.toFixed(2)
 		beer.save()
 	})
 })
-
-
-
 
 

@@ -1,14 +1,19 @@
 <div class="modal-header">
     <h2 class="modal-title">{{beer.name}}</h2>
+    <h4 class = "pull-right">${{beer.price}}</h4>
 </div>
 <div class="modal-body">
     <img class = "pull-left" src="http://www.fillmurray.com/400/300">
     <h4>{{beer.brewery_oid.name}}</h4>
-    <h4>Style: {{beer.style_oid.style_name}}</h4>
+    <h4>{{beer.style_oid.style_name}}</h4>
+    <rating ng-model="beer.rating" max="5" readonly="isReadOnly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
     <h5>{{beer.descript}}</h5>
+    <h4 class = "pull-right">{{beer.abv}}%</h4>
+
     
 </div>
 <div class="modal-footer">
+	<h3 class = "pull-left">Stock: {{beer.stock}}</h3>
 	<i class="fa fa-minus-circle fa-2x quantity" ng-click ="minus()"></i>
 	<input type="text" id="quantity" value = {{quantity}}></input>
 	<i class="fa fa-plus-circle fa-2x quantity" ng-click = "plus()"></i>

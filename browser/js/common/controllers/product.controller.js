@@ -1,7 +1,11 @@
 app.controller('ProductController', function($scope,$modalInstance,beer){
 	$scope.beer = beer
 	$scope.quantity = 0
-	$scope.beer.stock = 10
+	$scope.beer.abv = beer.abv.toFixed(2)
+	$scope.isReadOnly = true
+
+
+
 	$scope.ok = function () {
 		$modalInstance.close($scope.selected.item)
 	}
