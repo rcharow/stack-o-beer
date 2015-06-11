@@ -1,10 +1,12 @@
-app.controller('BrowseController',function($scope, SideBarFactory){
-		console.log("IN SIDEBAR CONTROLLER");
+app.controller('MainController',function($scope, SideBarFactory){
+		console.log("IN Main CONTROLLER");
 	
-		console.log('SideBarFactory', SideBarFactory)
 		
-		$scope.categories = "Hey";
+
 		SideBarFactory.getBeerCategories().then(function(categories){
+
+					$scope.categories = categories;
+
 			console.log('In categoryController', categories);
 		})
 	
