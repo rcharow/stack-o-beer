@@ -9,6 +9,12 @@ app.controller('MainController',function($scope, SideBarFactory){
 
 			console.log('In categoryController', categories);
 		})
-	
 
+		$scope.goToCategory= function(categoryID){
+			DisplayBeerFactory.getTypeBeer(categoryID).then(function(beers){
+
+				$scope.beers= beers
+				return
+			})
+		}
 })

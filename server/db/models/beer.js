@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
 
 var schema = new mongoose.Schema({
 	name: {type: String, required: true},
-	cat_id: {type: String, required: true},
+	cat_id: {type: Number, required: true},
 	cat_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
 	style_id: {type: String, required: true},
 	style_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Style'},
