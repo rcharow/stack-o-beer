@@ -8,7 +8,7 @@ var Category = mongoose.model('Category')
 
 module.exports = router
 
-router.get('/', function(req, res){
+router.get('/', function (req, res, next){
 	
 	Category.find().exec().then(function(cats){
 		console.log('cats',cats);
