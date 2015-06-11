@@ -4,7 +4,8 @@ app.factory('SideBarFactory', function($http){
 
 		getBeerCategories: function(){
 
-			return $http.get('/api/beer/categories').then(function(results)
+			return $http.get('/api/categories').then(function(results)
+
 				{
 					return results.data
 				})
