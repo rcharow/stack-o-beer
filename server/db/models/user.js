@@ -18,6 +18,9 @@ var schema = new mongoose.Schema({
     admin:{
         type: Boolean
     },
+    cart:{
+        type: Object
+    },
     twitter: {
         id: String,
         username: String,

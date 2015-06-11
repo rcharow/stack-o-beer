@@ -6,12 +6,14 @@ var mongoose = require('mongoose')
 var Beer = mongoose.model('Beer')
 var Category = mongoose.model('Category')
 
-router.get('/',function (req,res,next){
-	Beer.find(req.query)
-	.exec()
-	.then(function(beers){
-		res.json(beers)
-	},next)
-})
-
 module.exports = router
+
+router.get('/', function(req, res){
+	
+	Category.find().exec().then(function(cats){
+		console.log('cats',cats);
+		res.json(cats)
+	},next)
+	
+
+})

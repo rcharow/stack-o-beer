@@ -50,11 +50,9 @@ module.exports = function (app) {
     app.post('/signup',function(req,res,next){
 
         UserModel.findOne({email:req.body.email},function(err,user){
-            console.log(user)
             if (!user){
-                UserModel.create(req.body, function(){
-                    console.log('success')
-                    res.status(200)
+                UserModel.create(req.body, function(err,user){
+                    res.status(200).send(user)
                 })
             }
         })
