@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var schema = new mongoose.Schema({
 	name: {type: String, required: true},
 	cat_id: {type: String, required: true},
+    cat_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
 	style_id: {type: String, required: true},
 	descript: {type: String, required: true},
 	abv: {type: Number, required: true},
