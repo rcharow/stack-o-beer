@@ -1,6 +1,7 @@
 app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 	$stateProvider.state('home',{
-		templateUrl: '/js/common/templates/home.html'
+		templateUrl: '/js/common/templates/home.html',
+		controller: 'MainController'
 		
 	})
 
