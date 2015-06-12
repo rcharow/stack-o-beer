@@ -4,23 +4,38 @@
 </div>
 <div class="modal-body">
     <img class = "pull-left" src="http://www.fillmurray.com/400/400">
-    <div ng-show = "!review">
+    
+    <div ng-show = "visible.detail">
         <h4>{{beer.brewery_oid.name}}</h4>
         <h4>{{beer.style_oid.style_name}}</h4>
         <rating ng-model="beer.rating" max="5" readonly="isReadOnly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
         <h5>{{beer.descript}}</h5>
         <h4 class = "pull-right">{{beer.abv}}%</h4>
-        <button class = "pull-left" ng-click = "toggleReview()">Show the Reviews</button>
+        <button class="pull-left btn btn-default" ng-click = "toggleVisible('review')">Reviews</button>
     </div>
-    <div ng-show = "review">
-        <ul>
-            <li>rachel</li>
-            <li>rachel</li>
-            <li>rachel</li>
-            <li>rachel</li>
-            <li>rachel</li>
+
+    <div ng-show = "visible.review">
+        <ul class="review-list">
+            <review ng-repeat="review in reviews"></review>
         </ul>
-            <button class = "pull-left" ng-click = "toggleReview()">Go back to Details</button>
+        <div class="pull-left">
+            <button class = "pull-left btn btn-default" ng-click="toggleVisible('detail')">Beer Details</button>
+            <button class = "pull-left btn btn-default" ng-show="user" ng-click="toggleVisible('edit')">Write Review</button>
+        </div>
+    </div>
+
+    <div ng-show="visible.edit">
+        <label>Rating</label>
+        {{userRating}}
+        <rating ng-model="userRating" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+        <form>
+            <label>Comments</label>
+            <input type="text" ng-model="userComment"></input>
+        </form>
+        <div>
+            <button class="btn btn-default pull-left" ng-click="toggleVisible('review')">Back to Reviews</button>
+            <button class="btn btn-default pull-left" ng-click="submitReview()">Submit</button>
+        </div>
     </div>
     
 </div>
@@ -29,6 +44,6 @@
 	<i class="fa fa-minus-circle fa-2x quantity" ng-click ="minus()"></i>
 	<input type="text" id="quantity" value = {{quantity}}></input>
 	<i class="fa fa-plus-circle fa-2x quantity" ng-click = "plus()"></i>
-	<button class = "btn btn-default"><i class="fa fa-cart-plus fa-2x"></i> </button>
+	<button class="btn btn-default"><i class="fa fa-cart-plus fa-2x"></i> </button>
 	<alert type = "danger" ng-show ="error">{{error}}</alert>
 </div>
