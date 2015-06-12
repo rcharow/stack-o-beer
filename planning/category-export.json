@@ -1,0 +1,11 @@
+{"_id":{"$oid":"55760413bc48bd122edf497c"},"cat_name":"Irish Ale","id":2,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf497d"},"cat_name":"North American Ale","id":3,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf497e"},"cat_name":"British Ale","id":1,"last_mod":"2010-10-24 13:50:10 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf497f"},"cat_name":"Belgian and French Ale","id":5,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4980"},"cat_name":"International Ale","id":6,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4981"},"cat_name":"German Lager","id":7,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4982"},"cat_name":"North American Lager","id":8,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4983"},"cat_name":"Other Lager","id":9,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4984"},"cat_name":"International Lager","id":10,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4985"},"cat_name":"German Ale","id":4,"last_mod":"2010-06-08 00:00:00 UTC"}
+{"_id":{"$oid":"55760413bc48bd122edf4986"},"cat_name":"Other Style","id":11,"last_mod":"2010-06-08 00:00:00 UTC"}
