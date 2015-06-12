@@ -1,4 +1,4 @@
-app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, UpdateCart, AuthService){
+app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, Review, UpdateCart, AuthService){
 		console.log("IN Main CONTROLLER");
 		
 		var cart = [];
@@ -24,8 +24,6 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 		}
 
 
-
-
 		$scope.displayBeer = function (beer){
 				var modalProduct = $modal.open({
 					animation: $scope.animationEnabled,
@@ -33,13 +31,19 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 					controller: 'ProductController',
 					size: 'lg',
 					resolve: { 
-						beer:function(){return beer}
+						beer:function(){return beer},
+						reviews: function () {
+							return Review.getReviewsByBeerId(beer._id)
+						},
+						user: function (AuthService){
+							return AuthService.getLoggedInUser()
+							.then(function (user){
+								return user
+							})
+						}
 					}
 				})
 			}
-
-
-
 
 		var loggedInUser;
 
@@ -52,10 +56,6 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 				}
 
 		})
-
-
-
-
 
 		
 		$scope.buyBeer= function(i){
