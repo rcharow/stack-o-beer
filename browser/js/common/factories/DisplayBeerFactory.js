@@ -9,10 +9,10 @@ app.factory('DisplayBeerFactory', function($http){
 			})
 		},
 		getBeerById: function(id){
-			var query = {}
+			var query = {};
 			query.beerId = id
 			return $http.get('/api/beer',{
-				params = query
+				params: query
 			})
 			.then(function(beer){
 				console.log("BEER DATA",beer.data)
