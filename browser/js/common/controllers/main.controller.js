@@ -30,8 +30,11 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 			resolve: { 
 				beer:function(){return beer},
 				user:function(){if(loggedInUser){return loggedInUser} else{ return null}}
-
 			}
+
+
 		})
+
 	}
+
 })
