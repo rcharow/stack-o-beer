@@ -20,8 +20,7 @@ var schema = new mongoose.Schema({
     },
     cart:{
         type: [{
-            item: String,
-            price: Number,
+            productId:{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
             quantity: Number
         }]
     },

@@ -2,6 +2,7 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 		console.log("IN Main CONTROLLER");
 		
 		var cart = [];
+        if (AuthService.isAuthenticated()) $scope.cart = $scope.user.cart
 
 		SideBarFactory.getBeerCategories().then(function(categories){
 

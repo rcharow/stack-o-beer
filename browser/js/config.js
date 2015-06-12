@@ -12,20 +12,14 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 	
 	})
 
-	$stateProvider.state('cart',{
-		url: '/cart',
-		templateUrl: '/js/common/templates/cart.html'//,
-		// controller:
+	$stateProvider.state('checkout',{
+		url: '/checkout',
+		templateUrl: '/js/common/templates/checkout.html',
+		controller: 'checkoutController'
 	})
 	$stateProvider.state('productDetail',{
 		url: '/product',
 		templateUrl: '/js/common/templates/product.html'//,
-		// controller:
-	})
-	
-	$stateProvider.state('cart.checkout',{
-		url: '/js/cart/checkout',
-		templateUrl: 'js/common/templates/checkout.html'//,
 		// controller:
 	})
 	

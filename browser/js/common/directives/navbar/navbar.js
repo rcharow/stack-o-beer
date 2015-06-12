@@ -8,7 +8,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             scope.items = [
                 { label: 'Home', state: 'home.main' },
-                { label: 'About', state: 'about' },
+                { label: 'User', state: 'user', auth:true },
                 { label: 'Members Only', state: 'membersOnly', auth: true }
             ];
 
@@ -20,10 +20,12 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             scope.logout = function () {
                 AuthService.logout().then(function () {
-                   $state.go('home');
+                   $state.go('home.main');
                 });
             };
-
+            scope.goToCheckout = function(){
+                $state.go('home.main')
+            }
             var setUser = function () {
                 AuthService.getLoggedInUser().then(function (user) {
                     scope.user = user;
