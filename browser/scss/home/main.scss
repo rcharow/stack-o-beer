@@ -63,9 +63,12 @@ ul.browse-list {
     column-count: 4;
     column-gap: 20px;
 }
+modal {
+  width:85%;
+}
 
 .modal-body {
-  height: 450px;
+  height: 350px;
 }
 
 .modal-footer{
@@ -89,4 +92,12 @@ ul.browse-list {
     width: 2em;
     text-align: center;
   }
+}
+
+ul.review-list {
+    height: 250px;
+    width: 40%;
+    overflow:hidden; 
+    overflow-y:scroll;
+  
 }

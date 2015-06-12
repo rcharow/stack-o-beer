@@ -8,7 +8,7 @@ router.use('/members', require('./members'));
 router.use('/beer', require('./beer/beerRoute'))
 router.use('/categories', require('./beer/categoryRoute'))
 router.use('/user', require('./beer/userRoute'))
-
+router.use('/review', require('./beer/reviewRoute'))
 
 router.post('/signup',function(req,res,next){
 
