@@ -1,7 +1,7 @@
 app.controller('ProductController', function($scope,$modalInstance,AuthService,Review,beer,reviews,user){
 	$scope.beer = beer
 	$scope.quantity = 0
-	$scope.beer.abv = beer.abv.toFixed(2)
+    $scope.beer.abv = Number(beer.abv.toFixed(2))
 	$scope.isReadOnly = true
 	$scope.user = user
 	$scope.userRating = 0

@@ -3,10 +3,22 @@
         <div class="navbar-header">
             <!-- <fullstack-logo></fullstack-logo> -->
         </div>
+
         <ul class="nav navbar-nav">
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
+            <div class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    <i class="fa fa-shopping-cart"></i>  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat = "item in user.cart">{{item.item}}</li>
+                    <li class="divider"></li>
+                    <h6>Total: {{total}}</h6>
+                    <button type = "button" class = "btn btn-warning" ng-click = "goToChckout">Check out!</button>
+                </ul>
+            </div>
             <li><span ui-sref="cart"class="navbar-brand"><i class="fa fa-shopping-cart"></i></span><li>
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>

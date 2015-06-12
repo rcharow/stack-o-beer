@@ -6,7 +6,7 @@
 // 	})
 // 	$stateProvider.state('cart',{
 // 		url: '/cart',
-// 		templateUrl: '/js/common/templates/cart.html'//,
+// 		templateUrl: '/js/common/templates/checkout.html'//,
 // 		// controller:
 // 	})
 // 	$stateProvider.state('productDetail',{
