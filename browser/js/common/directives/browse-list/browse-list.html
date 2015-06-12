@@ -1,5 +1,5 @@
 <ul class="browse-list">
-	<li ng-repeat="i in [1,2,3,4]" class="pull-right">
-		<browseitem></browseitem>
+	<li ng-repeat="beer in beers" class="pull-right" ng-click="displayBeer(beer)">
+		{{beer.name}}
 	</li>
 </ul>

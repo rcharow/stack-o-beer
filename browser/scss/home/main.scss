@@ -25,9 +25,6 @@ ul.side-nav.fixed li {
   line-height: 44px;
 }
 
-.browse-list {
-  list-style-type: none;
-}
 
 .browse-item {
    width: 20%;
@@ -48,3 +45,48 @@ ul.side-nav.fixed li {
   }
 }
 
+.carousel {
+  width: 95%;
+  .caption-img {
+    margin-top: 20px;
+  }
+}
+
+.carousel-indicators li { visibility: hidden; }
+
+ul.browse-list {
+  list-style-type: none;
+    -moz-column-count: 4;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 20px;
+    column-count: 4;
+    column-gap: 20px;
+}
+
+.modal-body {
+  height: 450px;
+}
+
+.modal-footer{
+  #quantity {
+    width: 30px;
+  }
+  .quantity{
+    position: relative;
+    top:5px;
+
+  }
+
+  button {
+    margin: 0 15px;
+  }
+
+  input {
+    position: relative;
+
+    height: 2em;
+    width: 2em;
+    text-align: center;
+  }
+}

@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
 	style_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Style'},
 	descript: {type: String},
 	abv: {type: Number, required: true},
-	price: {type: Number, required: true, default: Math.floor(Math.random()*35)},
+	price: {type: String, required: true},
 	photo: {type: String},
 	brewery_id: {type: Number},
 	brewery_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Brewery'},
@@ -20,7 +20,7 @@ var schema = new mongoose.Schema({
 		quantity: {type: Number},
 		container: {type: String}
 	},
-	stock: {type: Number, required: true, default: Math.floor(Math.random()*50)},
+	stock: {type: Number, required: true},
 	tags: {type: [String]}
 
 })
