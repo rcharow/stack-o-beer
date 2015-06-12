@@ -7,7 +7,6 @@ var schema = new mongoose.Schema({
 	date: {type: Date, required: true, default: Date.now},
 	items: [{
 		productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
-		price: {type: Number, required: true},
 		quantity: {type: Number, required: true}
 	}],
 	status: {type: String, required: true, enum: orders}

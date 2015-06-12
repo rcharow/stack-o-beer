@@ -16,14 +16,9 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     $scope.sendLogin = function (loginInfo) {
 
         $scope.error = null;
-        //grabs the cart session thats stored on client and send it up to auth factory
-        var getCartSession = sessionStorage.getItem("cartSession");
-        var cartObj = JSON.parse(getCartSession);
-        console.log('While logging on this cart should be sent', cartObj)
-
-
-        AuthService.login(loginInfo, cartObj).then(function () {
-            $state.go('home');
+       
+        AuthService.login(loginInfo).then(function () {
+            $state.go('home.main');
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
         });
