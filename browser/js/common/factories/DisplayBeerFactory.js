@@ -14,7 +14,7 @@ app.factory('DisplayBeerFactory', function($http){
 			})
 		},
 		getBeerById: function(id){
-			var query = {}
+			var query = {};
 			query.beerId = id
 			return $http.get('/api/beer',{
 				params : query

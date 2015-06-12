@@ -19,7 +19,11 @@ var schema = new mongoose.Schema({
         type: Boolean
     },
     cart:{
-        type: Object
+        type: [{
+            item: String,
+            price: Number,
+            quantity: Number
+        }]
     },
     twitter: {
         id: String,
@@ -66,4 +70,4 @@ schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-module.exports = mongoose.model('User', schema);
+mongoose.model('User', schema);

@@ -48,7 +48,7 @@
         ]);
     });
 
-    app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
+    app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q, UpdateCart) {
 
         // Uses the session factory to see if an
         // authenticated user is currently registered.
@@ -93,8 +93,20 @@
         function onSuccessfulLogin(response) {
             var data = response.data;
             Session.create(data.id, data.user);
-            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-            return data.user;
+            var item = sessionStorage.getItem("test");
+            if(item){
+                console.log('items are ', item)
+                var itemObj = JSON.parse(item);
+                UpdateCart.insertItem(itemObj).then(function(){
+                     console.log('inserted')
+                     $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                     return data.user;
+                    })
+            }
+            else
+            
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                return data.user;
         }
 
     });
