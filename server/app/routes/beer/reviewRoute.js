@@ -9,11 +9,17 @@ var Review = mongoose.model('Review')
 module.exports = router
 
 router.get('/:beerId', function (req,res, next){
-	console.log("IN REVIEW ROUTE", req.params.beerId)
 	Review.find({beerId: req.params.beerId})
 	.exec()
 	.then(function(reviews){
 		console.log('REVIEWS', reviews)
 		res.json(reviews)
+	},next)
+})
+
+router.post('/',function (req,res,next){
+	Review.create(req.body)
+	.then(function (review){
+		res.json(review)
 	},next)
 })

@@ -4,21 +4,37 @@
 </div>
 <div class="modal-body">
     <img class = "pull-left" src="http://www.fillmurray.com/400/400">
-    <div ng-show = "!review">
+    
+    <div ng-show = "visible.detail">
         <h4>{{beer.brewery_oid.name}}</h4>
         <h4>{{beer.style_oid.style_name}}</h4>
         <rating ng-model="beer.rating" max="5" readonly="isReadOnly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
         <h5>{{beer.descript}}</h5>
         <h4 class = "pull-right">{{beer.abv}}%</h4>
-        <button class="pull-left btn btn-default" ng-click = "toggleReview()">Show the Reviews</button>
+        <button class="pull-left btn btn-default" ng-click = "toggleVisible('review')">Reviews</button>
     </div>
-    <div ng-show = "review">
+
+    <div ng-show = "visible.review">
         <ul class="review-list">
             <review ng-repeat="review in reviews"></review>
         </ul>
         <div class="pull-left">
-            <button class = "pull-left btn btn-default" ng-click = "toggleReview()">Beer Details</button>
-            <button class = "pull-left btn btn-default" ng-show="user">Review Beer</button>
+            <button class = "pull-left btn btn-default" ng-click="toggleVisible('detail')">Beer Details</button>
+            <button class = "pull-left btn btn-default" ng-show="user" ng-click="toggleVisible('edit')">Write Review</button>
+        </div>
+    </div>
+
+    <div ng-show="visible.edit">
+        <label>Rating</label>
+        {{userRating}}
+        <rating ng-model="userRating" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+        <form>
+            <label>Comments</label>
+            <input type="text" ng-model="userComment"></input>
+        </form>
+        <div>
+            <button class="btn btn-default pull-left" ng-click="toggleVisible('review')">Back to Reviews</button>
+            <button class="btn btn-default pull-left" ng-click="submitReview()">Submit</button>
         </div>
     </div>
     
