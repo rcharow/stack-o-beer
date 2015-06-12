@@ -4,12 +4,24 @@
 </div>
 <div class="modal-body">
     <img class = "pull-left" src="http://www.fillmurray.com/400/400">
-    <h4>{{beer.brewery_oid.name}}</h4>
-    <h4>{{beer.style_oid.style_name}}</h4>
-    <rating ng-model="beer.rating" max="5" readonly="isReadOnly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-    <h5>{{beer.descript}}</h5>
-    <h4 class = "pull-right">{{beer.abv}}%</h4>
-
+    <div ng-show = "!review">
+        <h4>{{beer.brewery_oid.name}}</h4>
+        <h4>{{beer.style_oid.style_name}}</h4>
+        <rating ng-model="beer.rating" max="5" readonly="isReadOnly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+        <h5>{{beer.descript}}</h5>
+        <h4 class = "pull-right">{{beer.abv}}%</h4>
+        <button class = "pull-left" ng-click = "toggleReview()">Show the Reviews</button>
+    </div>
+    <div ng-show = "review">
+        <ul>
+            <li>rachel</li>
+            <li>rachel</li>
+            <li>rachel</li>
+            <li>rachel</li>
+            <li>rachel</li>
+        </ul>
+            <button class = "pull-left" ng-click = "toggleReview()">Go back to Details</button>
+    </div>
     
 </div>
 <div class="modal-footer">

@@ -1,4 +1,4 @@
-app.controller('MainController',function($scope, SideBarFactory, DisplayBeerFactory, UpdateCart, AuthService){
+app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, UpdateCart, AuthService){
 		console.log("IN Main CONTROLLER");
 		
 		var cart = [];

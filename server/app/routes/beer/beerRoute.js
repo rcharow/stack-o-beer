@@ -18,7 +18,7 @@ router.get('/',function (req,res,next){
 	console.log(modelParams)
 	Beer.find(modelParams)
 	.populate('brewery_oid style_oid cat_oid')
-	.limit(25)
+	.limit(50)
 	.exec()
 	.then(function(beers){
 		res.json(beers)
