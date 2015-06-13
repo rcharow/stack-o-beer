@@ -36,7 +36,7 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	$scope.plus = function(){
 		if ($scope.beer.stock >$scope.quantity) $scope.quantity++
 		else {
-			$scope.error = "Sorry, we can't keep up."
+			$scope.error = "Sorry, we can't keep up."gi
 		}
 	}
 	
