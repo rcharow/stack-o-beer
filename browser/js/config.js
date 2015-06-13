@@ -1,14 +1,22 @@
 app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 	$stateProvider.state('home',{
 		templateUrl: '/js/common/templates/home.html',
-		controller: 'MainController'
+		controller: 'MainController',
+		resolve: {
+			user: function (AuthService){
+						return AuthService.getLoggedInUser()
+						.then(function (user){
+							return user
+						})
+					}
+		}
 		
 	})
 
 	$stateProvider.state('home.main',{
 		url:'/browse',
-		templateUrl: '/js/common/templates/category.html',
-		controller: "BrowseController"
+		templateUrl: '/js/common/templates/category.html'
+		
 	
 	})
 
