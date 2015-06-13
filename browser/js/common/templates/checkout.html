@@ -3,13 +3,11 @@
     <div class = "container">
         <ul>
             <li ng-repeat = "item in cart">
-                <h4>{{item.item.name}}</h4>
-                <h5>{{item.item.price}}</h5>
-                <h5>{{item.quantity}}</h5>
+                <h4>Item: {{item.name}} Quantity: {{item.quantity}} Price: {{item.price}}</h4>
             </li>
         </ul>
-        <h4>{{total}}</h4>
-        <button class = "btn btn-success" ng-click = "checkout(cart)">Check Out</button>
+        <h4>Total: {{total}}</h4>
+        <button class = "btn btn-success" ng-click = "displayOrder(cart)">Check Out</button>
 
     </div>
 </div>

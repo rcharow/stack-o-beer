@@ -24,7 +24,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 });
             };
             scope.goToCheckout = function(){
-                $state.go('home.main')
+                $state.go('checkout')
             }
             var setUser = function () {
                 AuthService.getLoggedInUser().then(function (user) {
