@@ -14,22 +14,38 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 		})	
 	})
 
+	 $rootScope.$on('auth-logout-success', function(){
+			localStorage.clear()
+	})
+
     function insertItem(item, user, quantity){
-    	console.log('item', item)
+    	cartArray.push(item)
+    	console.log('cartArray', cartArray)
     	console.log('user', user)
     	item.quantity = quantity
     	if(user){
     		console.log('here')
 			return $http.put('/api/user', {
-				user: user, item: item
+				user: user, item: cartArray
 			}).then(function(response){
-				console.log('asdasd',response.data)
+				console.log('asdasd',response.data.cart)
+
+				response.data.cart.forEach(function(cartItem){
+					if(typeof cartItem === Object){
+						cartArray.push(cartItem)
+						console.log('item is an object')
+					}
+				})
+				var jsonStr = JSON.stringify(response.data.cart);
+				localStorage.setItem("cartSession", jsonStr);
+
+
 				return response.data
 			}) 
 	}
 		else{
 
-			cartArray.push(item);
+			cartArray.push(item)
 			var jsonStr = JSON.stringify(cartArray);
 			localStorage.setItem("cartSession", jsonStr);
 			return

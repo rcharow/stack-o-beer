@@ -48,6 +48,9 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	$scope.addToCart = function(thisBeer){
 		if(!user){ user=null}
 		console.log('quant',$scope.quantity)
+		if ($scope.quantity>0)
+		{
 		UpdateCart.insertItem(thisBeer,user,$scope.quantity)
+		}
 	}
 })
