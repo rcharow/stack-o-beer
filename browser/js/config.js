@@ -25,10 +25,22 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 		templateUrl: '/js/common/templates/checkout.html',
 		controller: 'checkoutController'
 	})
+
 	$stateProvider.state('productDetail',{
 		url: '/product',
 		templateUrl: '/js/common/templates/product.html'//,
 		// controller:
+	})
+
+	$stateProvider.state('admin',{
+		url: '/admin',
+		templateUrl: '/js/common/templates/admin.html',
+		controller: 'AdminController',
+		resolve: {
+			beers: function (DisplayBeerFactory){
+				return DisplayBeerFactory.getAllBeers()
+			}
+		}
 	})
 	
 	// $urlRouterProvider.otherwise('/')

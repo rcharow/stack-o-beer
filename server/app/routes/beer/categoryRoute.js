@@ -12,7 +12,6 @@ module.exports = router
 router.get('/', function (req, res, next){
 	Beer.find()
 	.distinct('cat_oid',function(err,catIds){
-		console.log(catIds)
 		Category.find({_id: { $in: catIds } })
 		.exec()
 		.then(function(cats){

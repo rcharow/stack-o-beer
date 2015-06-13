@@ -1,0 +1,13 @@
+<div>
+	<div class="btn-group" role="group" aria-label="...">
+	  <button type="button" class="btn btn-default" ng-class="{btnSelected: adminAction.edit}" ng-click="toggleAction('edit')" >Edit Beer</button>
+	  <button type="button" class="btn btn-default" ng-class="{btnSelected: adminAction.add}" ng-click="toggleAction('add')">Add New Beer</button>
+	</div>
+	<select class="form-control" ng-show="adminAction.edit">
+		<option ng-repeat="beer in beers" value="{{beer._id}}">{{beer.name}}</option>
+	</select>
+	<editbeerform></editformbeer>
+</div>
+
+
+

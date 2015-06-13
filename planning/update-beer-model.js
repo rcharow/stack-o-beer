@@ -1,6 +1,6 @@
 
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost:27017/beer-test').connection;
+var db = mongoose.connect("mongodb://beer:good@apollo.modulusmongo.net:27017/bo3duxOd").connection;
 require('../server/db/models/beer');
 require('../server/db/models/category');
 require('../server/db/models/style');
@@ -107,13 +107,19 @@ var Q = require('q')
 // 	})
 // })
 
-Beer.find().exec().then(function(beers){
-	beers.forEach(function(beer){
-		temp = beer.abv
-		console.log(temp.toFixed(2))
-		beer.abv = temp.toFixed(2)
-		beer.save()
-	})
-})
+// Beer.find().exec().then(function(beers){
+// 	beers.forEach(function(beer){
+// 		temp = beer.abv
+// 		console.log(temp.toFixed(2))
+// 		beer.abv = temp.toFixed(2)
+// 		beer.save()
+// 	})
+// })
 
+// Beer.find().exec().then(function(beers){
+// 	beers.forEach(function(beer){
+// 		beer.photo = 'http://www.fillmurray.com/400/300'
+// 		beer.save()
+// 	})
+// })
 
