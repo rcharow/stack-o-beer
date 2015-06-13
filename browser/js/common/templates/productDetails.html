@@ -42,8 +42,8 @@
 <div class="modal-footer">
 	<h3 class = "pull-left">Stock: {{beer.stock}}</h3>
 	<i class="fa fa-minus-circle fa-2x quantity" ng-click ="minus()"></i>
-	<input type="text" id="quantity" value = {{quantity}}></input>
+	<input type="text" id="quantity" ng-model = "quantity" value = {{quantity}}></input>
 	<i class="fa fa-plus-circle fa-2x quantity" ng-click = "plus()"></i>
-	<button class="btn btn-default"><i class="fa fa-cart-plus fa-2x"></i> </button>
-	<alert type = "danger" ng-show ="error">{{error}}</alert>
+	<button class = "btn btn-default" ng-click='addToCart(beer)'><i class="fa fa-cart-plus fa-2x"></i> </button>
+    	<alert type = "danger" ng-show ="error">{{error}}</alert>
 </div>
