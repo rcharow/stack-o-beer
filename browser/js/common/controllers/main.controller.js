@@ -25,7 +25,7 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 				$scope.goToCategory($scope.categories[0]._id)
 			}
 
-	
+		})
 
 		$scope.displayBeer = function (beer){
 				var modalProduct = $modal.open({

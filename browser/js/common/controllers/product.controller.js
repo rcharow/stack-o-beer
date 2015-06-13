@@ -7,7 +7,7 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	$scope.user = user
 	$scope.userRating = 0
 	$scope.userComment = ""
-
+	var cartArray = []
 	//ng show indicators
 	$scope.visible = {
 		review: false,
@@ -16,7 +16,6 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	}
 	
 	$scope.reviews = reviews
-	console.log("SCOPE REVIES", $scope.reviews)
 
 	$scope.toggleVisible = function(view){
 		for(var key in $scope.visible){
@@ -36,7 +35,7 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	$scope.plus = function(){
 		if ($scope.beer.stock >$scope.quantity) $scope.quantity++
 		else {
-			$scope.error = "Sorry, we can't keep up."gi
+			$scope.error = "Sorry, we can't keep up."
 		}
 	}
 	
@@ -44,7 +43,10 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 		if ($scope.quantity) $scope.quantity--
 	}
 	
+	console.log("SCOPE Poop", $scope.reviews)
+
 	$scope.addToCart = function(thisBeer){
+		console.log('YOOOO');
 		cartArray.push(thisBeer);
 		var jsonStr = JSON.stringify(cartArray);
 		localStorage.setItem("cartSession", jsonStr);
