@@ -17,7 +17,7 @@ router.put('/', function (req, res, next){
 
 		console.log('user is', user)			
 
-			res.send('YOO');
+			res.send(user.cart);
 	}).then(next, function(err){
 		console.log('error is',err)
 	})

@@ -46,19 +46,8 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 	console.log("SCOPE Poop", $scope.reviews)
 
 	$scope.addToCart = function(thisBeer){
-		console.log('YOOOO');
-		cartArray.push(thisBeer);
-		var jsonStr = JSON.stringify(cartArray);
-		localStorage.setItem("cartSession", jsonStr);
-		console.log(jsonStr);
-
-		if (user)
-			{	
-				var getCartSession = localStorage.getItem("cartSession");
-				var cartObj = JSON.parse(getCartSession);
-				UpdateCart.insertItem(cartObj,user).then(function(){
-					console.log('inserted')
-				})
-		}
+		if(!user){ user=null}
+		console.log('quant',$scope.quantity)
+		UpdateCart.insertItem(thisBeer,user,$scope.quantity)
 	}
 })
