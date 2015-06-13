@@ -10,6 +10,7 @@ module.exports = function (app) {
     // When passport.authenticate('local') is used, this function will receive
     // the email and password to run the actual authentication logic.
     var strategyFn = function (email, password, done) {
+        console.log('email is', email)
         UserModel.findOne({ email: email }, function (err, user) {
             if (err) return done(err);
             // user.correctPassword is a method from our UserModel schema.
@@ -23,9 +24,10 @@ module.exports = function (app) {
 
     // A POST /login route is created to handle login.
     app.post('/login', function (req, res, next) {
+       
 
         var authCb = function (err, user) {
-
+            console.log('USERRRRR IS', req.body)
             if (err) return next(err);
 
             if (!user) {
@@ -33,9 +35,20 @@ module.exports = function (app) {
                 error.status = 401;
                 return next(error);
             }
+                //if item exists update cart
+                
+            // User.update({_id: req.body.user._id}, {$push: {cart: {$each:req.body.item }}}).exec().then(function(user){
 
+            //     console.log('user is', user)            
+
+            //         res.send('YOO');
+            // }).then(next, function(err){
+            //     console.log('error is',err)
+            // })
+                    
             // req.logIn will establish our session.
             req.logIn(user, function (err) {
+
                 if (err) return next(err);
                 // We respond with a reponse object that has user with _id and email.
                 res.status(200).send({ user: _.omit(user.toJSON(), ['password', 'salt']) });

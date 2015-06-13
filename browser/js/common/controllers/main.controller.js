@@ -1,7 +1,20 @@
-app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, Review, UpdateCart, AuthService){
-		console.log("IN Main CONTROLLER");
-		
-		var cart = [];
+
+app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review){
+	
+	var loggedInUser;
+	//get all categories
+	SideBarFactory.getBeerCategories().then(function(categories){
+		$scope.categories = categories;
+	})
+
+	$scope.goToCategory= function(categoryID){
+
+		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers){
+			$scope.beers= beers
+			return
+		})
+	}
+
         if (AuthService.isAuthenticated()) $scope.cart = $scope.user.cart
 
 		SideBarFactory.getBeerCategories().then(function(categories){
@@ -12,17 +25,7 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 				$scope.goToCategory($scope.categories[0]._id)
 			}
 
-			console.log('In categoryController', categories);
-		})
-
-		$scope.goToCategory= function(categoryID){
-			DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers){
-
-				$scope.beers= beers
-				return
-			})
-		}
-
+	
 
 		$scope.displayBeer = function (beer){
 				var modalProduct = $modal.open({
@@ -44,51 +47,5 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 					}
 				})
 			}
-
-		var loggedInUser;
-
-		AuthService.getLoggedInUser().then(function (user){
-
-			if(user)
-				{	console.log('YOOOOOOOOOO is' , user)
-					loggedInUser= user;
-					
-				}
-
-		})
-
 		
-		$scope.buyBeer= function(i){
-			var stuff = {
-				item: 'Hey',
-				price: 2,
-				qty: 3
-			}
-
-			cart.push(stuff);
-			var jsonStr = JSON.stringify(cart);
-
-			sessionStorage.setItem("test", jsonStr);
-
-			var item = sessionStorage.getItem("test");
-			console.log(item)
-
-			if (loggedInUser)
-				{
-
-					var itemObj = JSON.parse(item);
-					console.log('Itemobj is', itemObj);
-					UpdateCart.insertItem(itemObj,loggedInUser).then(function(){
-						console.log('inserted')
-					})
-			}
-
-			else
-			{
-				var guest = sessionStorage.getItem("test");
-				console.log(guest);
-			}
-			
-
-		}
 })
