@@ -17,22 +17,33 @@ router.get('/',function (req,res,next){
 
 	Beer.find(modelParams)
 	.populate('brewery_oid style_oid cat_oid')
-	.limit(50)
+	.limit(100)
+	// .sort([['name', 'ascending']])
 	.exec()
 	.then(function(beers){
-		res.json(beers)
+		res.json(beers.sort(function(a,b){
+			if(a.name > b.name) return 1
+			if(a.name < b.name) return -1
+			return 0
+		}))
 	},next)
 })
 
 
-router.post('/',function (req,res,next){
-	console.log(req.body)
+router.put('/',function (req,res,next){
 	
-	Beer.findByIdAndUpdate(req.body._id, req.body, {upsert: true, new: true},function(err,beer){
-		if(err) next(err)
-
+	Beer.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,beer){
+		if(err) return next(err)
 		res.json(beer)
 	})
+})
+
+router.post('/',function (req,res,next){
+	
+	Beer.create(req.body)
+	.then(function (beer){
+		res.json(beer)
+	},next)
 })
 
 

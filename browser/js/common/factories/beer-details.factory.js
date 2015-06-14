@@ -18,15 +18,32 @@ app.factory('BeerDetails',function ($http){
 					return results.data
 				}
 		)},
-		upsertBeer: function (beer){
-			debugger
-			console.log("beer in update factory",beer)
-			return $http.post('api/beer',beer)
-			.then(function (beer){
-				return beer
-			},function (err){
-				console.log("Error upserting beer")
-			})
+		upsertBeer: function (beer,action){
+			if(action==='add'){
+				return $http.post('api/beer',beer)
+				.then(function (beer){
+					return {
+						message: 'success',
+						beer: beer.data
+					}
+				},function (err){
+					return {
+						message: 'error'
+					}
+				})
+			}else if(action==='update'){
+				return $http.put('api/beer',beer)
+				.then(function (beer){
+					return {
+						message: 'success',
+						beer: beer.data
+					}
+				},function (err){
+					return {
+						message: 'error'
+					}
+				})
+			}
 		}
 	}
 })

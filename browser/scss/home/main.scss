@@ -105,3 +105,27 @@ ul.review-list {
 .btnSelected {
   background-color: #e6e6e6;
 }
+
+///Admin
+.admin-form {
+  width: 40%;
+  margin-left: 30px;
+  margin-top: 20px;
+
+  label {
+    margin-top: 10px;
+  }
+
+  .submit {
+    margin-top: 15px;
+  }
+}
+.admin-form.col-2 {
+    width: 80%;
+  }
+
+.beer-select {
+  width:30%;
+  margin-left: 30px;
+  margin-top: 20px;
+}

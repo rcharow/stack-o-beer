@@ -5,16 +5,17 @@
 	  <button type="button" class="btn btn-default" ng-class="{btnSelected: adminAction.order}" ng-click="toggleAction('order')">Edit Orders</button>
 	</div>
 
-	<alert type="danger" ng-show="message">{{message}}</alert> 
-	<select class="form-control" ng-show="adminAction.edit" ng-model="selectedBeerId" ng-change="getBeer()">
+	<alert type="success" ng-show="success">{{success}}</alert> 
+	<alert type="danger" ng-show="error">{{error}}</alert> 
+	<select class="form-control beer-select" ng-show="adminAction.edit" ng-model="selectedBeerId" ng-change="getBeer()">
 		<option value="" disabled selected>Select a Beer</option>
 		<option ng-repeat="beer in beers" value="{{beer._id}}">{{beer.name}}</option>
 	</select>
-	<div>	
-		<addbeerform name="addForm" cat="categories" style="styles" brew="breweries" ng-show="adminAction.add"></addformbeer>
+	<div class="admin-form col-2" ng-show="adminAction.add">	
+		<addbeerform name="addForm" beer="newBeer" cat="categories" style="styles" brew="breweries" update="addBeer()"></addformbeer>
 	</div>
-	<div>
-		<editbeerform beer="selectedBeer" name="addForm" cat="categories" style="styles" brew="breweries" update="upsertBeer()" name="editForm" ng-show="adminAction.edit"></editformbeer>
+	<div class="admin-form">
+		<editbeerform ng-show="adminAction.edit" beer="selectedBeer" name="addForm" cat="categories" style="styles" brew="breweries" update="updateBeer()" name="editForm"></editformbeer>
 	</div>
 </div>
 
