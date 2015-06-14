@@ -1,8 +1,9 @@
-app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetails,AuthService,beers,categories,styles,breweries){
+app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetails,AuthService,beers,categories,styles,breweries,users){
 	$scope.beers = beers
 	$scope.categories = categories
 	$scope.styles = styles
 	$scope.breweries = breweries
+	$scope.users = users
 
 	$scope.editAction = true
 	$scope.addAction = false
@@ -10,7 +11,8 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 	$scope.adminAction = {
 		edit: true,
 		add: false,
-		order: false
+		order: false,
+		user: false
 	}
 
 	$scope.currentAction = 'edit'
@@ -25,15 +27,12 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 	$scope.toggleAction = function (action){
 		for(var key in $scope.adminAction){
 			$scope.adminAction[key] = false
-			$scope[key] = '0'
 		}
 		$scope.adminAction[action] = true
-		$scope[key] = '1'
 		$scope.currentAction = action
 	}
 
 	$scope.getBeer = function (){
-		debugger
 		DisplayBeerFactory.getBeerById($scope.selectedBeerId)
 		.then(function (beer){
 			$scope.selectedBeer = beer[0]

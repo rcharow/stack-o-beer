@@ -1,14 +1,16 @@
 <form>
-	<label for="name">Beer Name</label>
-	<input ng-model="editBeer.name" class="form-control" type="text" name="name" required/>
+	<div class="col-sm-6 col-md-6 col-lg-6">
+		<label for="name">Beer Name</label>
+		<input ng-model="editBeer.name" class="form-control" type="text" name="name" required/>
 
-	<label for="description">Description</label>
-	<input ng-model="editBeer.descript" class="form-control" type="text" name="desciption"/>
+		<label for="description">Description</label>
+		<input ng-model="editBeer.descript" class="form-control" type="text" name="desciption"/>
 
-	<label for="tags">Tags (comma delimited please)</label>
-	<input ng-model="editBeer.tags" class="form-control" type="text" name="tags"/>
+		<label for="tags">Tags (comma delimited please)</label>
+		<input ng-model="editBeer.tags" class="form-control" type="text" name="tags"/>
+	</div>
 
-	<div>
+	<div class="col-sm-6 col-md-6 col-lg-6">
 		<label for="category">Category</label>
 		<input ng-model="editBeer.cat_oid.cat_name" ng-readonly="true" class="form-control" type="text" name="category"/>
 

@@ -33,6 +33,9 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
+    },
+    reset: {
+        type: Boolean
     }
 });
 
