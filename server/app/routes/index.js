@@ -13,6 +13,7 @@ router.use('/styles', require('./beer/styleRoute'))
 router.use('/breweries', require('./beer/breweryRoute'))
 router.use('/checkout', require('./checkout/checkoutRoute'))
 router.use('/order', require('./orders/orderRoute'))
+router.use('/orders',require('./beer/orderRoute'))
 
 router.post('/signup',function(req,res,next){
 
