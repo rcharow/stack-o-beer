@@ -48,7 +48,13 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 			},
 			breweries: function (BeerDetails) {
 				return BeerDetails.getAllBreweries()
-			}	
+			},
+			orders: function(Order) {
+				return Order.getAllOrders()
+			},
+			users: function (User) {
+				return User.getAllUsers()
+			}
 		}
 	})
 	

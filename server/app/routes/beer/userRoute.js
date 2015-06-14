@@ -21,3 +21,20 @@ router.put('/', function (req, res, next){
 	})
 	
 })
+
+router.put('/admin',function (req,res,next){
+	User.findOneAndUpdate({_id: req.body._id}, {admin: req.body.admin, reset: req.body.reset},{new: true})
+	.exec()
+	.then(function (user){
+		res.json(user)
+	},next)
+})
+
+router.get('/', function (req, res, next){
+	User.find()
+	.sort([['email', 'ascending']])
+	.exec()
+	.then(function (users){
+		res.json(users)
+	},next)
+})
