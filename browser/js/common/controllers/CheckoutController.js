@@ -1,5 +1,4 @@
 app.controller('checkoutController',function($scope, AuthService, CheckoutFactory,$state){
-
     $scope.back = function(){
         $state.go('home.main')
     }

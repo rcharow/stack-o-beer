@@ -11,6 +11,7 @@ router.use('/user', require('./beer/userRoute'))
 router.use('/review', require('./beer/reviewRoute'))
 router.use('/styles', require('./beer/styleRoute'))
 router.use('/breweries', require('./beer/breweryRoute'))
+router.use('/checkout', require('./checkout/checkoutRoute'))
 
 router.post('/signup',function(req,res,next){
 
