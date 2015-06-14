@@ -11,11 +11,14 @@ app.directive('edituserform',function (User){
 	        	scope.success = undefined
 	        	scope.error = undefined
 	        	scope.selectedUserId = undefined
+
 	        	scope.getUser = function (){
 	        		scope.users.forEach(function (user){
 	        			if(user._id===scope.selectedUserId)
 	        				scope.user = user
 	        		})
+	        		scope.success = undefined
+	        		scope.error = undefined
 	        	}
 
 	        	scope.updateUser = function() {
@@ -26,13 +29,15 @@ app.directive('edituserform',function (User){
 		        				if(oldUser._id === user._id)
 		        					oldUser = user
 		        			})
-		        			scope.user = undefined
+
 		        			scope.success = 'User successfully updated'
+		        			scope.error=undefined
 		        		}else{
-		        			scope.message = "Error updating user"	
+		        			scope.error = "Error updating user"	
 		        		}
 	        		},function (err){
-	        			scope.message = "Error updating user"
+	        			scope.error = "Error updating user"
+	        			scope.success = undefined
 	        		})
 	        	}
 	        }
