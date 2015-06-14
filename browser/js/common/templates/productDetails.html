@@ -1,9 +1,10 @@
 <div class="modal-header">
     <h2 class="modal-title">{{beer.name}}</h2>
     <h4 class = "pull-right">${{beer.price}}</h4>
+    <button class="btn btn-warning" ng-show="user.admin">Edit</button>
 </div>
 <div class="modal-body">
-    <img class = "pull-left" src="http://www.fillmurray.com/400/400">
+    <img class = "pull-left" src="{{beer.photo}}">
     
     <div ng-show = "visible.detail">
         <h4>{{beer.brewery_oid.name}}</h4>
@@ -26,17 +27,17 @@
 
     <div ng-show="visible.edit">
         <label>Rating</label>
-        {{userRating}}
         <rating ng-model="userRating" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-        <form>
+        <form >
             <label>Comments</label>
-            <input type="text" ng-model="userComment"></input>
+            <input type="text" ng-model="userComment" class="form-control" required></input>
+            <div>
+                <button class="btn btn-default pull-left" ng-click="toggleVisible('review')">Back to Reviews</button>
+                <input type="submit" value="Submit" ng-submit="submitReview()"/>
+            </div>
         </form>
-        <div>
-            <button class="btn btn-default pull-left" ng-click="toggleVisible('review')">Back to Reviews</button>
-            <button class="btn btn-default pull-left" ng-click="submitReview()">Submit</button>
-        </div>
     </div>
+
     
 </div>
 <div class="modal-footer">
@@ -45,5 +46,5 @@
 	<input type="text" id="quantity" ng-model = "quantity" value = {{quantity}}></input>
 	<i class="fa fa-plus-circle fa-2x quantity" ng-click = "plus()"></i>
 	<button class = "btn btn-default" ng-click='addToCart(beer)'><i class="fa fa-cart-plus fa-2x"></i> </button>
-    	<alert type = "danger" ng-show ="error">{{error}}</alert>
+    <alert type = "danger" ng-show ="error">{{error}}</alert>
 </div>

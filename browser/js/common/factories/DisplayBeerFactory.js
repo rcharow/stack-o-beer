@@ -2,6 +2,13 @@ app.factory('DisplayBeerFactory', function($http){
 
 	return {
 
+		getAllBeers: function(){
+			return $http.get(('api/beer'),{})
+			.then(function (beers){
+				return beers.data
+			})
+		},
+
 		getBeerByCategory: function(id){
 			var query = {}
 			query.catId = id
@@ -9,7 +16,6 @@ app.factory('DisplayBeerFactory', function($http){
 				params : query
 			})
 			.then(function(beer){
-				console.log("BEER DATA",beer.data)
 				return beer.data
 			})
 		},
@@ -20,7 +26,6 @@ app.factory('DisplayBeerFactory', function($http){
 				params : query
 			})
 			.then(function(beer){
-				console.log("BEER DATA",beer.data)
 				return beer.data
 			})
 		}
