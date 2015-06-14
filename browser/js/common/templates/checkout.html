@@ -5,6 +5,9 @@
             <li ng-repeat = "item in cart">
                 <h4>Item: {{item.name}} Quantity: {{item.quantity}} Price: {{item.price}}</h4>
             </li>
+
+            <li>{{user}}</li>
+
         </ul>
         <h4>Total: {{total}}</h4>
         <button class = "btn btn-success" ng-click = "displayOrder(cart)">Check Out</button>

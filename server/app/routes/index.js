@@ -9,6 +9,7 @@ router.use('/beer', require('./beer/beerRoute'))
 router.use('/categories', require('./beer/categoryRoute'))
 router.use('/user', require('./beer/userRoute'))
 router.use('/review', require('./beer/reviewRoute'))
+router.use('/checkout', require('./checkout/checkoutRoute'))
 
 router.post('/signup',function(req,res,next){
 

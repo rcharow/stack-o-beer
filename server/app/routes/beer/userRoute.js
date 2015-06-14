@@ -10,14 +10,12 @@ module.exports = router
 
 router.put('/', function (req, res, next){
 
-	
+		console.log('Req.body.item is',req.body.item)
 
 
-	User.update({_id: req.body.user._id}, {$push: {cart: {$each:req.body.item }}}).exec().then(function(user){
+	User.findOneAndUpdate({_id: req.body.user._id}, {$push: {cart: {$each:req.body.item }}}).exec().then(function(user){
 
-		console.log('user is', user)			
-
-			res.send('YOO');
+			res.send(user);
 	}).then(next, function(err){
 		console.log('error is',err)
 	})

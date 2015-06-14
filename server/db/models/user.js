@@ -19,10 +19,8 @@ var schema = new mongoose.Schema({
         type: Boolean
     },
     cart:{
-        type: [{
-            productId:{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
-            quantity: Number
-        }]
+        type: Array,
+        "default": []
     },
     twitter: {
         id: String,
