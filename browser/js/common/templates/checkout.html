@@ -3,10 +3,10 @@
     <div class = "container">
         <ul>
             <li ng-repeat = "item in cart">
-                <h4>Item: {{item.name}} Quantity: {{item.quantity}} Price: {{item.price}}</h4>
+                <h4>Item: <p>{{item.name}}</p> <p>Quantity: {{item.quantity}}</p> <p>Price: {{item.price}}</p></h4>
             </li>
 
-            <li>{{user}}</li>
+            <li>{{user.cart}}</li>
 
         </ul>
         <h4>Total: {{total}}</h4>
