@@ -1,15 +1,23 @@
 <form>
 	<label for="name">Beer Name</label>
-	<input class="form-control" type="text" name="name" required/>
-	<label for="categpry">Category</label>
-	<input class="form-control" type="text" name="category" required/>
-	<label for="style">Style</label>
-	<input class="form-control" type="text" name="style" required/>
-	<label for="brewery">Brewery</label>
-	<input class="form-control" type="text" name="brewery" required/>
+	<input ng-model="editBeer.name" class="form-control" type="text" name="name" required/>
+
 	<label for="description">Description</label>
-	<input class="form-control" type="text" name="desciption" required/>
-	<label for="tags">Tags</label>
-	<input class="form-control" type="text" name="tags" required/>
-	<input class="form-control" ng-submit="upsertBeer()">
+	<input ng-model="editBeer.descript" class="form-control" type="text" name="desciption"/>
+
+	<label for="tags">Tags (comma delimited please)</label>
+	<input ng-model="editBeer.tags" class="form-control" type="text" name="tags"/>
+
+	<div>
+		<label for="category">Category</label>
+		<input ng-model="editBeer.cat_oid.cat_name" ng-readonly="true" class="form-control" type="text" name="category"/>
+
+		<label for="style">Style</label>
+		<input ng-model="editBeer.style_oid.style_name" ng-readonly="true" class="form-control" type="text" name="style"/>
+
+		<label for="brewery">Brewery</label>
+		<input ng-model="editBeer.brewery_oid.name" ng-readonly="true" class="form-control" type="text" name="brewery"/>
+	</div>
+	
+	<input type="submit" class="form-control" ng-click="update()">
 </form>

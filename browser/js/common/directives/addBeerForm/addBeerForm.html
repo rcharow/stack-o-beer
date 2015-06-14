@@ -1,0 +1,33 @@
+<form>
+	<label for="name">Beer Name</label>
+	<input ng-model="editBeer.name" class="form-control" type="text" name="name" required/>
+
+	<label for="description">Description</label>
+	<input ng-model="editBeer.descript" class="form-control" type="text" name="desciption"/>
+
+	<label for="tags">Tags (comma delimited please)</label>
+	<input ng-model="editBeer.tags" class="form-control" type="text" name="tags"/>
+
+
+
+	<div>
+		<select class="form-control">
+			<option value="-1" disabled selected>Select a Category</option>
+			<option ng-repeat="cat in categories" value="{{cat._id}}">{{cat.cat_name}}</option>
+		</select>
+
+		<select class="form-control">
+			<option value="-1" disabled selected>Select a Style</option>
+			<option ng-repeat="style in styles" value="{{style._id}}">{{style.style_name}}</option>
+		</select>
+
+		<select class="form-control">
+			<option value="-1" disabled selected>Select a Brewery</option>
+			<option ng-repeat="brew in breweries" value="{{brew._id}}">{{brew.name}}</option>
+		</select>
+	</div>
+
+	
+
+	<input type="submit" class="form-control" ng-click="update(editBeer)">
+</form>

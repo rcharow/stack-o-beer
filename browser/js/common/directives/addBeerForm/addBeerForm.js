@@ -1,4 +1,4 @@
-app.directive('editbeerform',function(){
+app.directive('addbeerform',function(){
 	return {
 		restrict: 'E',
 	        scope: {
@@ -7,10 +7,12 @@ app.directive('editbeerform',function(){
 	        	styles: "=style",
 	        	breweries: "=brew",
 	        	update: "&"
+	        	
 
 	        },
-	        templateUrl: 'js/common/directives/editBeerForm/editBeerForm.html',
+	        templateUrl: 'js/common/directives/addBeerForm/addBeerForm.html',
 	        link: function (scope){
+	        	
 	        }
     }
 })

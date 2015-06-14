@@ -27,7 +27,6 @@
 
     <div ng-show="visible.edit">
         <label>Rating</label>
-        {{userRating}}
         <rating ng-model="userRating" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
         <form >
             <label>Comments</label>
@@ -47,5 +46,5 @@
 	<input type="text" id="quantity" value = {{quantity}}></input>
 	<i class="fa fa-plus-circle fa-2x quantity" ng-click = "plus()"></i>
 	<button class = "btn btn-default" ng-click='addToCart(beer)'><i class="fa fa-cart-plus fa-2x"></i> </button>
-    	<alert type = "danger" ng-show ="error">{{error}}</alert>
+    <alert type = "danger" ng-show ="error">{{error}}</alert>
 </div>

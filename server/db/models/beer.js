@@ -1,6 +1,10 @@
 'use strict'
 var mongoose = require('mongoose')
 
+function cleanTags (tags){
+	return tags.replace(/ /g, '').split(",")
+}
+
 var schema = new mongoose.Schema({
 	name: {type: String, required: true},
 	cat_id: {type: Number, required: true},
@@ -23,6 +27,16 @@ var schema = new mongoose.Schema({
 	stock: {type: Number, required: true},
 	tags: {type: [String]}
 
+})
+
+schema.pre('save',function(next){
+	this.tags = cleanTags(this.tags)
+	next()
+})
+
+schema.pre('update',function(next){
+	this.tags = cleanTags(this.tags)
+	next()
 })
 
 

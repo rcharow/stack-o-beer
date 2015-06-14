@@ -15,7 +15,6 @@ router.get('/',function (req,res,next){
 	if(req.query.styleId) modelParams.style_oid = req.query.styleId
 	if(req.query.catId) modelParams.cat_oid = req.query.catId
 
-	console.log(modelParams)
 	Beer.find(modelParams)
 	.populate('brewery_oid style_oid cat_oid')
 	.limit(50)
@@ -26,8 +25,14 @@ router.get('/',function (req,res,next){
 })
 
 
-router.put('/',function (req,res,next){
+router.post('/',function (req,res,next){
+	console.log(req.body)
+	
+	Beer.findByIdAndUpdate(req.body._id, req.body, {upsert: true, new: true},function(err,beer){
+		if(err) next(err)
 
+		res.json(beer)
+	})
 })
 
 

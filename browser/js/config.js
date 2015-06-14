@@ -37,9 +37,18 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 		templateUrl: '/js/common/templates/admin.html',
 		controller: 'AdminController',
 		resolve: {
-			beers: function (DisplayBeerFactory){
+			beers: function (DisplayBeerFactory,BeerDetails){
 				return DisplayBeerFactory.getAllBeers()
-			}
+			}, 
+			categories: function (BeerDetails){
+				return BeerDetails.getAllCategories()
+			},
+			styles: function (BeerDetails){
+				return BeerDetails.getAllStyles()
+			},
+			breweries: function (BeerDetails) {
+				return BeerDetails.getAllBreweries()
+			}	
 		}
 	})
 	
