@@ -4,18 +4,18 @@ module.exports = router;
 var _ = require('lodash');
 var mongoose = require('mongoose')
 var Beer = mongoose.model('Beer')
-var Category = mongoose.model('Category')
+var Brewery = mongoose.model('Brewery')
 var Q = require('q')
 
 module.exports = router
 
 router.get('/', function (req, res, next){
 	Beer.find()
-	.distinct('cat_oid',function(err,catIds){
-		Category.find({_id: { $in: catIds } })
+	.distinct('brewery_oid',function(err,brewIds){
+		Brewery.find({_id: { $in: brewIds } })
 		.exec()
-		.then(function(cats){
-			res.json(cats)
+		.then(function(breweries){
+			res.json(breweries)
 		},next)
 	})
 })

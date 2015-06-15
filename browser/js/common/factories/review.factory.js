@@ -16,10 +16,9 @@ app.factory('Review',function($http){
 				comment: comment
 			}
 
-			console.log("submitting review",body)
 			return $http.post('/api/review',body)
 			.then(function (response){
-				console.log('submitted review', response.data)
+				return response.data
 			},function (err){
 				console.log("ERROR submitting beer review")
 			})

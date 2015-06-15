@@ -9,8 +9,9 @@
             <li>{{user.cart}}</li>
 
         </ul>
-        <h4>Total: {{total}}</h4>
-        <button class = "btn btn-success" ng-click = "displayOrder(cart)">Check Out</button>
+
+        <h4>{{total}}</h4>
+        <button class = "btn btn-success" ng-click = "checkout(user,cart)">Check Out</button>
 
     </div>
 </div>

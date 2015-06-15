@@ -8,6 +8,9 @@
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
+            <li ng-repeat="adminItem in adminItems" ng-show="isLoggedIn() && user.admin">
+                <a ui-sref-active="active" ui-sref="{{ adminItem.state }}">{{ adminItem.label }}</a>
+            </li>
             <div class="btn-group" dropdown is-open="status.isopen">
                 <button type="button" ng-click = "updateCart()" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
                     <i class="fa fa-shopping-cart"></i>  <span class="caret"></span>
@@ -25,6 +28,14 @@
 
                 </ul>
             </div>
+            <li>    
+                <form name="searchForm" ng-submit="beerInfo(result)">
+                    <input type="text" placeholder="Search" ng-model='result' typeahead="beer.name for beer in getBeer($viewValue)" typeahead-loading="loadingBeers" typeahead-on-select="beerInfo(result)">
+                    <i ng-show="loadingBeers" class="glyphicon glyphicon-refresh" ></i>
+
+                    <button type='submit'> Submit </button>
+                </form>
+            </li>
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
         <div ng-show="user" class="welcome">
