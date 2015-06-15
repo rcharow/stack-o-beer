@@ -31,6 +31,8 @@ var schema = new mongoose.Schema({
 
 })
 
+schema.index({ name: 'text' });
+
 schema.pre('save',function(next){
 	console.log('this tags',this.tags)
 	this.tags = cleanTags(this.tags)
@@ -41,6 +43,5 @@ schema.pre('update',function(next){
 	this.tags = cleanTags(this.tags)
 	next()
 })
-
 
 mongoose.model('Beer', schema);
