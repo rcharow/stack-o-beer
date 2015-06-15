@@ -18,14 +18,16 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 	})
 
     function insertItem(item, user, quantity){
-    	var cartArray = [];
-    	console.log('item is type',typeof item)
+    	console.log('Testing Testing',typeof item)
 
     	//if just a single object
     	if(!Array.isArray(item)){
     		console.log('an object')
     		item.quantity=quantity    
     		cartArray.push(item)
+    		console.log(cartArray)
+    		var jsonStr = JSON.stringify(cartArray);
+			localStorage.setItem("cartSession", jsonStr);
 		}
     	
     	//if being called from the event emmitter above
@@ -45,12 +47,7 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 				return response.data
 			}) 
 	}
-		else{
-			cartArray.push(item)
-			var jsonStr = JSON.stringify(cartArray);
-			localStorage.setItem("cartSession", jsonStr);
-			return
-		}
+		
 	}
 	
 	function getCart(user){
