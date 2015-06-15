@@ -12,23 +12,17 @@ module.exports = router
 //return all the orders. should probably set a limit on that fin
 //at some point
 router.get('/', function(req,res,next){
-	if(req.query){
-		// var modelParams = {modelParams._id: req.query._id}
-		var modelParams = {_id: req.query._id}
-	}
-	Order.find({modelParams}).exec().then(function(orders){
-		res.send(orders)
-	})
+    var modelParams = {}
+    if(req.query._id) modelParams._id = req.query._id
+    
+    Order.find(modelParams).exec().then(function(orders){
+        res.send(orders)
+    })
 })
 
 //making a new order
 router.post('/',function(req,res,next){
-	Order.create({
-		userId: req.userId,
-		date: Date.now,
-		items: req.items,
-		status: "Pending"
-	}).then(function(order){
+	Order.create(req.body).then(function(order){
 		User.findById(order.userId).exec().then(function(user){
 			user.order.push(order._id)
 

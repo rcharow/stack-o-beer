@@ -2,7 +2,7 @@ app.factory('OrderFactory',function($http){
     return {
         makeOrder: function(user,cart) {
             return $http.post('/api/order', {
-                useId: user._id, items: cart
+                userId: user._id, items: cart
             }).then(function (results) {
                 return results.data
             })
