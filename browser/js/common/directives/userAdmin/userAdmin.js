@@ -11,6 +11,12 @@ app.directive('edituserform',function (User){
 	        	scope.success = undefined
 	        	scope.error = undefined
 	        	scope.selectedUserId = undefined
+	        	scope.delete = false
+
+	        	scope.userError = function (){
+	        		scope.error = "You must select a user"
+	        		scope.success = undefined
+	        	}
 
 	        	scope.getUser = function (){
 	        		scope.users.forEach(function (user){
@@ -19,9 +25,15 @@ app.directive('edituserform',function (User){
 	        		})
 	        		scope.success = undefined
 	        		scope.error = undefined
+	        		scope.delete = false
 	        	}
 
 	        	scope.updateUser = function() {
+	        		if(!scope.user){
+	        			scope.userError()
+	        			return
+	        		}
+
 	        		User.adminUpdateUser(scope.user)
 	        		.then(function (user){
 	        			if(user){
@@ -39,6 +51,47 @@ app.directive('edituserform',function (User){
 	        			scope.error = "Error updating user"
 	        			scope.success = undefined
 	        		})
+	        	}
+
+	        	scope.deleteUser = function () {
+	        		if(!scope.user){
+	        			scope.userError()
+	        			return
+	        		}
+
+	        		User.deleteUser(scope.user._id)
+	        		.then(function (user){
+	        			if(user){
+	        				debugger
+	        				for(var i=0;i<scope.users.length;i++){
+	        					if(scope.users[i]._id===user._id){
+	        						scope.users.splice(i,1)
+	        						break;
+	        					}
+	        				}
+	        				scope.success = "User successfully deleted"
+	        				scope.error = undefined
+	        				scope.user = undefined
+	        				scope.delete = false
+
+	        			}else{
+	        				scope.error = "Error deleting user"	
+	        				scope.success = undefined
+	        			}
+
+	        		})
+	        	}
+
+	        	scope.checkDeleteUser = function () {
+	        		if(!scope.user){
+	        			scope.userError()
+	        			return
+	        		}
+	        		scope.delete = true
+	        	}
+
+	        	scope.cancelDelete = function () {
+	        		scope.delete = false
 	        	}
 	        }
     }

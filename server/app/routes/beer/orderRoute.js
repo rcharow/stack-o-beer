@@ -13,7 +13,8 @@ module.exports = router
 //at some point
 router.get('/', function(req,res,next){
 	if(req.query){
-		var modelParams = {modelParams._id: req.query._id}
+		// var modelParams = {modelParams._id: req.query._id}
+		var modelParams = {_id: req.query._id}
 	}
 	Order.find({modelParams}).exec().then(function(orders){
 		res.send(orders)
