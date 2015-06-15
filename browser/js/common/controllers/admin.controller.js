@@ -33,9 +33,11 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 	}
 
 	$scope.getBeer = function (){
+
 		DisplayBeerFactory.getBeerById($scope.selectedBeerId)
 		.then(function (beer){
 			$scope.selectedBeer = beer[0]
+			console.log($scope.selectedBeer)
 		})
 	}
 
