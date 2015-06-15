@@ -26,8 +26,13 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 
 		if(!$scope.beers){
 			if($scope.user){
-				RecEngine.getUserFavorites(user).then(function(favorites){
-					console.log('Favorites are',favorites)
+				RecEngine.getUserFavorites(user).then(function(beerRec){
+					if(beerRec.length===0 || !beerRec){
+						$scope.goToCategory($scope.categories[0]._id)
+					}
+					else{
+						$scope.beers = beerRec
+					}
 				})
 			}
 			else{

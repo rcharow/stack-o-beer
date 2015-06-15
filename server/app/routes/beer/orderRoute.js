@@ -24,7 +24,9 @@ router.get('/', function(req,res,next){
 router.post('/',function(req,res,next){
 	Order.create(req.body).then(function(order){
 		User.findById(order.userId).exec().then(function(user){
+			console.log('User was Found', user)
 			user.order.push(order._id)
+			user.save();
 
 		}, function(err){console.log(err, 'Filaed to find User')})
 		.then(function(order){

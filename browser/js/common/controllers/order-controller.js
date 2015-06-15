@@ -14,6 +14,8 @@ app.controller('orderController', function($scope,$modalInstance,AuthService, us
     	})
     }
 
-    $scope.cancel = function()
+    $scope.cancel = function() {
+        
+    }
 
 })

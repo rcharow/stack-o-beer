@@ -12,9 +12,8 @@ var schema = new mongoose.Schema({
     salt: {
         type: String
     },
-    order: {
-        type: [mongoose.Schema.Types.ObjectId], ref: 'Order'
-    },
+    order: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+
     admin:{
         type: Boolean
     },
