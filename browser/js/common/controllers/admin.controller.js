@@ -1,9 +1,10 @@
-app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetails,AuthService,beers,categories,styles,breweries,users){
+app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetails,AuthService,beers,categories,styles,breweries,users,orders){
 	$scope.beers = beers
 	$scope.categories = categories
 	$scope.styles = styles
 	$scope.breweries = breweries
 	$scope.users = users
+	$scope.orders = orders
 
 	$scope.editAction = true
 	$scope.addAction = false
@@ -14,7 +15,6 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 		order: false,
 		user: false
 	}
-
 	$scope.currentAction = 'edit'
 
 	$scope.selectedBeerId = undefined
@@ -33,14 +33,15 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 	}
 
 	$scope.getBeer = function (){
+
 		DisplayBeerFactory.getBeerById($scope.selectedBeerId)
 		.then(function (beer){
 			$scope.selectedBeer = beer[0]
+			console.log($scope.selectedBeer)
 		})
 	}
 
 	$scope.createBeer = function (beer){
-		debugger
 		var retBeer = {}
 		if(beer._id) retBeer._id = beer._id
 		
@@ -60,6 +61,7 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 		if(beer.abv) retBeer.abv = beer.abv
 		if(beer.stock) retBeer.stock = beer.stock
 		if(beer.price) retBeer.price = beer.price
+		if(beer.photo) retBeer.photo = beer.photo
 
 		return retBeer
 	}

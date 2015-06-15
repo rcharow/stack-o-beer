@@ -12,10 +12,9 @@ app.factory('OrderFactory',function($http){
             })
         },
 
-        updateOrder: function(user, cart,orderStatus){
-        	return $http.put('/api/'+user._id,{
-        		cart:cart, orderStatus: orderStatus
-       		}).then(function(results){
+        updateOrder: function(order){
+        	return $http.put('/api/order',order)
+            .then(function(results){
        			return results.data
        		})
         },
@@ -29,6 +28,8 @@ app.factory('OrderFactory',function($http){
         		return order.data
         	})
         }
+
+
 
 	}
 })

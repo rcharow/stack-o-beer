@@ -8,9 +8,14 @@
 
 		<label for="tags">Tags (comma delimited please)</label>
 		<input ng-model="editBeer.tags" class="form-control" type="text" name="tags"/>
+
+		<label for="stock">Stock</label>
+		<input ng-model="editBeer.stock" class="form-control" type="text" name="stock"/>
 	</div>
 
 	<div class="col-sm-6 col-md-6 col-lg-6">
+		<label for="photo">Photo Url</label>
+		<input ng-model="editBeer.photo" class="form-control" type="text" name="photo"/>
 		<label for="category">Category</label>
 		<input ng-model="editBeer.cat_oid.cat_name" ng-readonly="true" class="form-control" type="text" name="category"/>
 
