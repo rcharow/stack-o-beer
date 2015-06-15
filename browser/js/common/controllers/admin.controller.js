@@ -59,6 +59,7 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 		if(beer.abv) retBeer.abv = beer.abv
 		if(beer.stock) retBeer.stock = beer.stock
 		if(beer.price) retBeer.price = beer.price
+		if(beer.photo) retBeer.photo = beer.photo
 
 		return retBeer
 	}
