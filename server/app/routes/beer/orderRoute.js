@@ -15,7 +15,7 @@ router.get('/', function(req,res,next){
     var modelParams = {}
     if(req.query._id) modelParams._id = req.query._id
     
-    Order.find(modelParams).exec().then(function(orders){
+    Order.find(modelParams).populate('items.productId').exec().then(function(orders){
         res.send(orders)
     })
 })

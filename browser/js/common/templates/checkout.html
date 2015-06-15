@@ -2,9 +2,7 @@
     <button class = "btn btn-warning" ng-click = "back()">Back to Shopping</button>
     <div class = "container">
         <ul>
-            <li ng-repeat = "item in cartObj">
-                <h4>Item: <p>{{item.name}}</p> <p>Quantity: {{item.quantity}}</p> <p>Price: {{item.price}}</p></h4>
-            </li>
+            <cartitem beer="beer" ng-repeat="beer in cartObj"></cartitem>
         </ul>
 
         <h4>Your Total is: {{total}}</h4>
