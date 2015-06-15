@@ -46,8 +46,8 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 				localStorage.setItem("cartSession", jsonStr);
 				return response.data
 			}) 
-	}
-		
+		}
+
 	}
 	
 	function getCart(user){

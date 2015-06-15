@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
 		productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Beer'},
 		quantity: {type: Number, required: true}
 	}],
-	status: {type: String, required: true, enum: orders}
+	status: {type: String, required: true, enum: orders, default: "Pending"}
 
 })
 module.exports = mongoose.model('Order', schema);
