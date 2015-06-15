@@ -1,16 +1,15 @@
 app.factory('UpdateCart', function($http, $rootScope, AuthService){
-
-	var cartArray = []
-	var getCartSession = localStorage.getItem("cartSession");
-
+	  var cartArray = []
 		//on the login event insert items from localStorage to DB Storage
     $rootScope.$on('auth-login-success', function(){
-		
+
 		AuthService.getLoggedInUser().then(function (user){
+			var getCartSession = localStorage.getItem("cartSession");
 			var cartObj = JSON.parse(getCartSession);
-			insertItem(cartObj,user).then(function(){
-						console.log('merged CARTS!')
-			})
+			if (cartObj){
+				insertItem(cartObj,user).then(function(){
+							console.log('merged CARTS!')
+			})}
 		})	
 	})
 
@@ -19,39 +18,39 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 	})
 
     function insertItem(item, user, quantity){
-    	cartArray.push(item)
-    	console.log('cartArray', cartArray)
-    	console.log('user', user)
-    	item.quantity = quantity
+    	var cartArray = [];
+    	console.log('item is type',typeof item)
+
+    	//if just a single object
+    	if(!Array.isArray(item)){
+    		console.log('an object')
+    		item.quantity=quantity    
+    		cartArray.push(item)
+		}
+    	
+    	//if being called from the event emmitter above
+    	if (Array.isArray(item)){
+    		console.log('its an array')
+    		cartArray=item
+    	}
     	if(user){
-    		console.log('here')
+    		console.log('cartArray in user is',cartArray)
 			return $http.put('/api/user', {
 				user: user, item: cartArray
 			}).then(function(response){
-				console.log('asdasd',response.data.cart)
 
-				response.data.cart.forEach(function(cartItem){
-					if(typeof cartItem === Object){
-						cartArray.push(cartItem)
-						console.log('item is an object')
-					}
-				})
+				console.log('data cart',response.data.cart)
 				var jsonStr = JSON.stringify(response.data.cart);
 				localStorage.setItem("cartSession", jsonStr);
-
-
 				return response.data
 			}) 
 	}
 		else{
-
 			cartArray.push(item)
 			var jsonStr = JSON.stringify(cartArray);
 			localStorage.setItem("cartSession", jsonStr);
 			return
 		}
-
-
 	}
 	
 	function getCart(user){
