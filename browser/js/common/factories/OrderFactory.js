@@ -9,7 +9,7 @@ app.factory('OrderFactory',function($http){
         },
 
         updateOrder: function(user, cart,orderStatus){
-        	return $httpe.put('/api/'+user._id,{
+        	return $http.put('/api/'+user._id,{
         		cart:cart, orderStatus: orderStatus
        		}).then(function(results){
        			return results.data

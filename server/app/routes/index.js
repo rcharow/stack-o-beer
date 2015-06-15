@@ -15,6 +15,7 @@ router.use('/checkout', require('./checkout/checkoutRoute'))
 router.use('/search', require('./beer/searchRoute'))
 router.use('/order', require('./orders/orderRoute'))
 router.use('/orders',require('./beer/orderRoute'))
+router.use('/favorites', require('./beer/favoriteRoute'))
 
 router.post('/signup',function(req,res,next){
 
