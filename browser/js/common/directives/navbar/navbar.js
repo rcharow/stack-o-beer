@@ -8,11 +8,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
 
             scope.items = [
                 { label: 'Home', state: 'home.main' },
-                { label: 'User', state: 'user', auth:true },
-                { label: 'Members Only', state: 'membersOnly', auth: true }
+                { label: 'User', state: 'user', auth: true }
+                
             ];
 
-            
+            scope.adminItems = [
+                { label: 'Admin', state: 'admin'}
+            ]
+
+
             scope.user = null;
 
             scope.isLoggedIn = function () {

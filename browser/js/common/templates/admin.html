@@ -1,0 +1,52 @@
+<div>
+
+	<div class="btn-group admin-options" role="group" aria-label="...">
+		<div class="btn-group" dropdown is-open="status.isopen">
+		    <button type="button" 
+		    class="btn btn-default dropdown-toggle" 
+		    ng-class="{btnSelected: adminAction.edit || adminAction.add}"
+		    dropdown-toggle 
+		    ng-disabled="disabled">
+		        Manage Beer
+		    </button>
+		    <ul class="dropdown-menu" role="menu">
+		        <div>
+		            <li  ng-click="toggleAction('edit')">Edit Beer</li>
+		      		<li ng-click="toggleAction('add')">Add Beer</li>
+		        </div>
+		    </ul>
+	    </div>
+		<button class="btn btn-default" ng-class="{btnSelected: adminAction.order}" ng-click="toggleAction('order')">
+		  	Manage Orders
+		</button>
+		<button class="btn btn-default" ng-class="{btnSelected: adminAction.user}" ng-click="toggleAction('user')">Manage Users</button>
+
+	</div>
+
+	<alert type="success" ng-show="success">{{success}}</alert> 
+	<alert type="danger" ng-show="error">{{error}}</alert> 
+
+	<select 
+	class="form-control admin-select" 
+	ng-show="adminAction.edit" 
+	ng-model="selectedBeerId" 
+	ng-change="getBeer()">
+		<option value="" disabled selected>Select a Beer</option>
+		<option ng-repeat="beer in beers" value="{{beer._id}}">{{beer.name}}</option>
+	</select>
+
+	<div class="admin-form col-2" ng-show="adminAction.add">	
+		<addbeerform name="addForm" beer="newBeer" cat="categories" style="styles" brew="breweries" update="addBeer()"></addformbeer>
+	</div>
+
+	<div class="admin-form col-2">
+		<editbeerform ng-show="adminAction.edit" beer="selectedBeer" name="addForm" cat="categories" style="styles" brew="breweries" update="updateBeer()" name="editForm"></editformbeer>
+	</div>
+
+	<div class="admin-form">
+		<edituserform ng-show="adminAction.user" allusers="users" selected="selectedUser" update="updateUser()"></edituserform>
+	</div>
+</div>
+
+
+

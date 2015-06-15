@@ -17,6 +17,7 @@ require('./models/category');
 require('./models/style');
 require('./models/brewery');
 require('./models/reviews');
+require('./models/order');
 
 var startDbPromise = new Q(function (resolve, reject) {
     db.on('open', resolve);

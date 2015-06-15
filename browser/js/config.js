@@ -25,10 +25,37 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 		templateUrl: '/js/common/templates/checkout.html',
 		controller: 'checkoutController'
 	})
+
 	$stateProvider.state('productDetail',{
 		url: '/product',
 		templateUrl: '/js/common/templates/product.html'//,
 		// controller:
+	})
+
+	$stateProvider.state('admin',{
+		url: '/admin',
+		templateUrl: '/js/common/templates/admin.html',
+		controller: 'AdminController',
+		resolve: {
+			beers: function (DisplayBeerFactory,BeerDetails){
+				return DisplayBeerFactory.getAllBeers()
+			}, 
+			categories: function (BeerDetails){
+				return BeerDetails.getAllCategories()
+			},
+			styles: function (BeerDetails){
+				return BeerDetails.getAllStyles()
+			},
+			breweries: function (BeerDetails) {
+				return BeerDetails.getAllBreweries()
+			},
+			orders: function(Order) {
+				return Order.getAllOrders()
+			},
+			users: function (User) {
+				return User.getAllUsers()
+			}
+		}
 	})
 	
 	// $urlRouterProvider.otherwise('/')

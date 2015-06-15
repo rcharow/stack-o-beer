@@ -15,14 +15,36 @@ router.get('/',function (req,res,next){
 	if(req.query.styleId) modelParams.style_oid = req.query.styleId
 	if(req.query.catId) modelParams.cat_oid = req.query.catId
 
-	console.log(modelParams)
 	Beer.find(modelParams)
 	.populate('brewery_oid style_oid cat_oid')
-	.limit(50)
+	.limit(100)
+	// .sort([['name', 'ascending']])
 	.exec()
 	.then(function(beers){
-		res.json(beers)
+		res.json(beers.sort(function(a,b){
+			if(a.name > b.name) return 1
+			if(a.name < b.name) return -1
+			return 0
+		}))
 	},next)
 })
+
+
+router.put('/',function (req,res,next){
+	
+	Beer.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,beer){
+		if(err) return next(err)
+		res.json(beer)
+	})
+})
+
+router.post('/',function (req,res,next){
+	
+	Beer.create(req.body)
+	.then(function (beer){
+		res.json(beer)
+	},next)
+})
+
 
 module.exports = router

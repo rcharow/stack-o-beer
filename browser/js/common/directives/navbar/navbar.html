@@ -8,6 +8,9 @@
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
+            <li ng-repeat="adminItem in adminItems" ng-show="isLoggedIn() && user.admin">
+                <a ui-sref-active="active" ui-sref="{{ adminItem.state }}">{{ adminItem.label }}</a>
+            </li>
             <div class="btn-group" dropdown is-open="status.isopen">
                 <button type="button" ng-click = "updateCart()" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
                     <i class="fa fa-shopping-cart"></i>  <span class="caret"></span>

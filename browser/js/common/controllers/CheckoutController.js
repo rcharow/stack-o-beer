@@ -1,4 +1,4 @@
-app.controller('checkoutController',function($scope, AuthService, CheckoutFactory,$state){
+app.controller('checkoutController',function($scope, AuthService, OrderFactory,$state){
     $scope.back = function(){
         $state.go('home.main')
     }
@@ -9,8 +9,8 @@ app.controller('checkoutController',function($scope, AuthService, CheckoutFactor
     })
 
     $scope.checkout = function(user,cart){
-        CheckoutFactory.checkout(user,cart).then(function(){
-            $state.go('home.main')
+        OrderFactory.makeOrder(user,cart).then(function(){
+            $state.go('thanks')
         })
     }
 

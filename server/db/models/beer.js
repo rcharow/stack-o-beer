@@ -1,11 +1,17 @@
 'use strict'
 var mongoose = require('mongoose')
 
+function cleanTags (tags){
+	return tags.map(function (tag){
+		return tag.replace(/ /g, '').split(",")
+	})
+}
+
 var schema = new mongoose.Schema({
 	name: {type: String, required: true},
-	cat_id: {type: Number, required: true},
+	cat_id: {type: Number},
 	cat_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
-	style_id: {type: String, required: true},
+	style_id: {type: String},
 	style_oid: {type: mongoose.Schema.Types.ObjectId, ref: 'Style'},
 	descript: {type: String},
 	abv: {type: Number, required: true},
@@ -27,6 +33,15 @@ var schema = new mongoose.Schema({
 
 schema.index({ name: 'text' });
 
+schema.pre('save',function(next){
+	console.log('this tags',this.tags)
+	this.tags = cleanTags(this.tags)
+	next()
+})
 
+schema.pre('update',function(next){
+	this.tags = cleanTags(this.tags)
+	next()
+})
 
 mongoose.model('Beer', schema);

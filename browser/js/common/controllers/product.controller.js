@@ -25,9 +25,18 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 		console.log(view)
 	}
 
+
 	$scope.submitReview = function (){
 		Review.submitUserReview(user._id, beer._id,$scope.userRating,$scope.userComment)
+		.then(function(review){
+			debugger
+			console.log("submitted review in controller")
+			$scope.reviews.push(review)
+			$scope.toggleVisible('detail')
+		})
 	}
+
+
 	$scope.ok = function () {
 		$modalInstance.close($scope.selected.item)
 	}
