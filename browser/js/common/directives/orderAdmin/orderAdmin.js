@@ -17,7 +17,7 @@ app.directive('manageorderform',function(OrderFactory){
 	        	scope.orderFilter = ""
 
 	        	scope.changeFilter = function(){
-	        		scope.$digest
+	        		scope.$digest()
 	        	}
 
 	        	scope.statusFilter = function (order){
