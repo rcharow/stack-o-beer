@@ -5,10 +5,12 @@
     <ul>
         <li ng-repeat="item in cartObj">
             <a>{{ item.name }}</a>
+           	Quantity: {{item.quantity}}
         </li>
     </ul>
 </div>
 <div class="modal-footer">
+	<h3>Your Total is: {{total}}</h3>
     <button class="btn btn-primary" ng-click="comfirm(user,cartObj)">Comfirm Order</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>
