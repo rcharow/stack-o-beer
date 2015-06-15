@@ -1,5 +1,5 @@
 
-app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review, user){
+app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review, user, RecEngine){
 	
 	var loggedInUser;
 
@@ -25,7 +25,20 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 		$scope.categories = categories;
 
 		if(!$scope.beers){
-			$scope.goToCategory($scope.categories[0]._id)
+			if($scope.user){
+				RecEngine.getUserFavorites(user).then(function(beerRec){
+					if(beerRec.length===0 || !beerRec){
+						$scope.goToCategory($scope.categories[0]._id)
+					}
+					else{
+						$scope.beers = beerRec
+					}
+				})
+			}
+			else{
+				$scope.goToCategory($scope.categories[0]._id)
+			}
+
 		}
 
 	})
