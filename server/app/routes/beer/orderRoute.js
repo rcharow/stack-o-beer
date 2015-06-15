@@ -37,7 +37,7 @@ router.post('/',function(req,res,next){
 
 //update something about an order
 router.put('/',function(req,res,next){
-	Order.findOneAndUpdate(req.body,{new: true})
+	Order.findOneAndUpdate({_id: req.body._id},req.body,{new: true})
 	.exec()
 	.then(function(order){
 		res.json(order)

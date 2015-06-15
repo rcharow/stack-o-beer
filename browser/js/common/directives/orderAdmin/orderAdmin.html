@@ -16,7 +16,7 @@
 		<tr ng-repeat="order in orders" ng-click="selectOrder(order)">
 			<td>{{order._id}}</td>
 			<td>{{order.date | date : 'longDate'}}</td>
-			<td>{{order.userId.email}}</td>
+			<td>{{order.userId}}</td>
 			<td>{{order.status}}</td>
 		</tr>	
 	  </table>
@@ -30,7 +30,7 @@
 		<label>Date</label>
 		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder.date | date : 'longDate'">
 		<label>User</label>
-		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder.userId.email">
+		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder.userId">
 		<div>
 			<div class="pull-left admin-input-float">
 				<label>Status</label>
