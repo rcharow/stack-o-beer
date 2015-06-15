@@ -1,0 +1,50 @@
+<div class="col-sm-6 col-md-6 col-lg-6">
+	<label>Filter Orders By Status</label>
+	<select class="form-control">
+		<option ng-repeat="status in orderStatus" value="{{status}}">{{status}}</option>
+	</select>
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">Orders</div>
+	  <table class="table table-hover">
+	  	<tr>
+	  		<th>Id</th>
+	  		<th>Date Placed</th>
+	  		<th>User</th>
+	  		<th>Status</th>
+	  	</tr>
+		<tr ng-repeat="order in orders" ng-click="selectOrder(order)">
+			<td>{{order._id}}</td>
+			<td>{{order.date | date : 'longDate'}}</td>
+			<td>{{order.userId.email}}</td>
+			<td>{{order.status}}</td>
+		</tr>	
+	  </table>
+	</div>
+</div>
+<div class="col-sm-6 col-md-6 col-lg-6">
+	<label>Edit Order</label>
+	<form>
+		<label>Id</label>
+		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder._id"><label>Id</label>
+		<label>Date</label>
+		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder.date | date : 'longDate'">
+		<label>User</label>
+		<input class="form-control" type="text" ng-readonly="true" ng-model="selectedOrder.userId.email">
+		<div>
+			<div class="pull-left admin-input-float">
+				<label>Status</label>
+				<input class="form-control" type="text" ng-model="selectedOrder.status">
+			</div>
+			<div class="pull-left admin-input-float">
+				<label>Update Order Status</label>
+				<select class="form-control" ng-model="selectedStatus" ng-change="changeStatus()">
+					<option ng-repeat="status in editStatus" value="{{status}}">{{status}}</option>
+				</select>
+			</div>
+		</div>
+		<input type="submit" class="btn btn-warning submit" ng-click="updateStatus()" value="Update Status">
+	</form>
+	<alert type="success" ng-show="success">{{success}}</alert> 
+	<alert type="danger" ng-show="error">{{error}}</alert> 
+</div>
