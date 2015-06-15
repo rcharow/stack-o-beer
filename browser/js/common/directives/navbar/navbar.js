@@ -34,12 +34,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
 
             scope.updateCart = function(){
                 // getCartSession = localStorage.getItem("cartSession");
+
+                console.log('YOOO IN updateCart')
                 scope.cartObj = JSON.parse(localStorage.getItem("cartSession"));
+                console.log('cart in updateCart is', scope.cart)
                 scope.total =0;
                 scope.cartObj.forEach(function(item){
                     scope.total += (item.price *item.quantity)
                 })
-                console.log('cart from factory is',scope.cartObj)
+                console.log('cart from factory is',scope.cart)
             }
 
             scope.getBeer = function(val){
