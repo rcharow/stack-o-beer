@@ -49,8 +49,8 @@ app.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
 			breweries: function (BeerDetails) {
 				return BeerDetails.getAllBreweries()
 			},
-			orders: function(Order) {
-				return Order.getAllOrders()
+			orders: function(OrderFactory) {
+				return OrderFactory.getOrder()
 			},
 			users: function (User) {
 				return User.getAllUsers()
