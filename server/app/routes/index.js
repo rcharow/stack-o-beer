@@ -10,6 +10,8 @@ router.use('/categories', require('./beer/categoryRoute'))
 router.use('/user', require('./beer/userRoute'))
 router.use('/review', require('./beer/reviewRoute'))
 router.use('/checkout', require('./checkout/checkoutRoute'))
+router.use('/search', require('./beer/searchRoute'))
+
 
 router.post('/signup',function(req,res,next){
 

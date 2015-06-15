@@ -25,5 +25,8 @@ var schema = new mongoose.Schema({
 
 })
 
+schema.index({ name: 'text' });
+
+
 
 mongoose.model('Beer', schema);
