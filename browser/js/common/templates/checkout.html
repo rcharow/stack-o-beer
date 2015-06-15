@@ -2,16 +2,13 @@
     <button class = "btn btn-warning" ng-click = "back()">Back to Shopping</button>
     <div class = "container">
         <ul>
-            <li ng-repeat = "item in cart">
+            <li ng-repeat = "item in cartObj">
                 <h4>Item: <p>{{item.name}}</p> <p>Quantity: {{item.quantity}}</p> <p>Price: {{item.price}}</p></h4>
             </li>
-
-            <li>{{user.cart}}</li>
-
         </ul>
 
-        <h4>{{total}}</h4>
-        <button class = "btn btn-success" ng-click = "checkout(user,cart)">Check Out</button>
+        <h4>Your Total is: {{total}}</h4>
+        <button class = "btn btn-success" ng-click = "displayOrder(user,cart)">Check Out</button>
 
     </div>
 </div>

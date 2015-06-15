@@ -46,7 +46,6 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 			}) 
 	}
 		else{
-			cartArray.push(item)
 			var jsonStr = JSON.stringify(cartArray);
 			localStorage.setItem("cartSession", jsonStr);
 			return

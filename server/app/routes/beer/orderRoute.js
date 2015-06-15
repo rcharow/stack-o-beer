@@ -23,12 +23,7 @@ router.get('/', function(req,res,next){
 
 //making a new order
 router.post('/',function(req,res,next){
-	Order.create({
-		userId: req.userId,
-		date: Date.now,
-		items: req.items,
-		status: "Pending"
-	}).then(function(order){
+	Order.create(req.body).then(function(order){
 		User.findById(order.userId).exec().then(function(user){
 			user.order.push(order._id)
 
