@@ -1,9 +1,11 @@
 app.factory('OrderFactory',function($http){
     return {
         makeOrder: function(user,cart) {
+
             cart = cart.map(function(a){
-                return {productId: a._id, quantity: a.quantity}
-            })
+               return {productId: a._id, quantity: a.quantity}
+           })
+
             return $http.post('/api/order', {
                 userId: user._id, items: cart
             }).then(function (results) {
@@ -11,10 +13,9 @@ app.factory('OrderFactory',function($http){
             })
         },
 
-        updateOrder: function(user, cart,orderStatus){
-        	return $http.put('/api/'+user._id,{
-        		cart:cart, orderStatus: orderStatus
-       		}).then(function(results){
+        updateOrder: function(order){
+        	return $http.put('/api/order',order)
+            .then(function(results){
        			return results.data
        		})
         },
@@ -28,6 +29,8 @@ app.factory('OrderFactory',function($http){
         		return order.data
         	})
         }
+
+
 
 	}
 })

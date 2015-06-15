@@ -31,7 +31,7 @@
 	ng-show="adminAction.edit" 
 	ng-model="selectedBeerId" 
 	ng-change="getBeer()">
-		<option value="" disabled selected>Select a Beer</option>
+		<option value="" disabled selected>Select a Beer to Edit</option>
 		<option ng-repeat="beer in beers" value="{{beer._id}}">{{beer.name}}</option>
 	</select>
 
@@ -45,6 +45,10 @@
 
 	<div class="admin-form">
 		<edituserform ng-show="adminAction.user" allusers="users" selected="selectedUser" update="updateUser()"></edituserform>
+	</div>
+
+	<div class="admin-form col-2">
+		<manageorderform ng-show="adminAction.order" allorders="orders"></manageorderform>
 	</div>
 </div>
 
