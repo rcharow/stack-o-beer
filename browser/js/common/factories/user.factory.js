@@ -9,12 +9,23 @@ app.factory ('User',function ($http){
 			})
 		},
 		adminUpdateUser: function (user){
-			console.log("user in factory",user)
 			return $http.put('/api/user/admin',user)
 			.then(function (results){
 				return results.data
 			},function (err){
 				console.log("error admin updating user")
+			})
+		},
+		deleteUser: function (userId){
+			console.log("user in delete factory",userId)
+			return $http.delete('/api/user/'+userId)
+			.then(function (results){
+				debugger
+				return results.data
+			},function (err){
+				debugger
+				console.log("error deleting user")
+				return 
 			})
 		}
 	}

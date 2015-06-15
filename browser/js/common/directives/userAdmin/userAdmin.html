@@ -14,6 +14,12 @@
 	<label for="reset">Trigger Password Reset?</label>
 	<input name="reset" type="checkbox" class="form-control" ng-model="user.reset">
 	<input type="submit" class="btn btn-default submit" ng-click="updateUser()" value="Submit"/>
+	<input type="submit" class="btn btn-danger submit" ng-click="checkDeleteUser()" value="Delete User"/>
 </form>
+<div ng-show="delete">
+		<label for="delete">Are you sure you want to delete user {{user._id}}?</label>
+		<input type="submit" class="btn btn-danger submit" ng-click="deleteUser()" value="Yes, delete"/>
+		<input type="submit" class="btn btn-default submit" ng-click="cancelDelete()" value="Cancel"/>
+</div>
 <alert type="success" ng-show="success">{{success}}</alert> 
 <alert type="danger" ng-show="error">{{error}}</alert> 

@@ -38,3 +38,13 @@ router.get('/', function (req, res, next){
 		res.json(users)
 	},next)
 })
+
+router.delete('/:userId',function (req,res,next){
+	console.log("about to delete user", req.params.userId)
+	User.findByIdAndRemove(req.params.userId)
+	.exec()
+	.then(function (user){
+		console.log("user deleted")
+		res.json(user)
+	},next)
+})

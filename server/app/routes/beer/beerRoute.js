@@ -17,7 +17,7 @@ router.get('/',function (req,res,next){
 
 	Beer.find(modelParams)
 	.populate('brewery_oid style_oid cat_oid')
-	.limit(100)
+	.limit(50)
 	// .sort([['name', 'ascending']])
 	.exec()
 	.then(function(beers){
