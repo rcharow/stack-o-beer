@@ -7,19 +7,19 @@ var Order = mongoose.model('Order')
 
 router.get('/',function (req,res,next){
 	console.log('in order route')
-	var modelParams = {}
-	if(req.query.userId) modelParams.userId = req.query.userId
-	if(req.query.date) modelParams.date = req.query.date
-	if(req.query.startDate){
-		req.query.date = {}
-		req.query.date.$gte = req.query.startDate
-	}
-	if(req.query.endDate){
-		req.query.date = req.query.date || {}
-		req.query.date.$lte = req.query.endDate
-	}
+	// var modelParams = {}
+	// if(req.query.userId) modelParams.userId = req.query.userId
+	// if(req.query.date) modelParams.date = req.query.date
+	// if(req.query.startDate){
+	// 	req.query.date = {}
+	// 	req.query.date.$gte = req.query.startDate
+	// }
+	// if(req.query.endDate){
+	// 	req.query.date = req.query.date || {}
+	// 	req.query.date.$lte = req.query.endDate
+	// }
 
-	Order.find(modelParams)
+	Order.find()
 	.populate('userId')
 	.exec()
 	.then(function (orders){

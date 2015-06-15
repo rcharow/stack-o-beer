@@ -46,6 +46,10 @@
 	<div class="admin-form">
 		<edituserform ng-show="adminAction.user" allusers="users" selected="selectedUser" update="updateUser()"></edituserform>
 	</div>
+
+	<div class="admin-form col-2">
+		<manageorderform ng-show="adminAction.order" allorders="orders"></manageorderform>
+	</div>
 </div>
 
 
