@@ -14,7 +14,19 @@ app.directive('manageorderform',function(OrderFactory){
 	        	scope.selectedStatus = undefined
 	        	scope.success = undefined
 	        	scope.error = undefined
+	        	scope.orderFilter = ""
 
+	        	scope.changeFilter = function(){
+	        		scope.$digest
+	        	}
+
+	        	scope.statusFilter = function (order){
+	        		if(scope.orderFilter === 'All')
+	        			return order
+	        		else if (order.status === scope.orderFilter)
+	        			return order
+
+	        	}
 
 	        	scope.selectOrder = function (order){
 	        		scope.selectedOrder = order
