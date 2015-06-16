@@ -10,7 +10,7 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 	})
 
 	$scope.goToCategory= function(categoryID)
-	{
+	{	
 		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers)
 		{
 			$scope.beers= beers
@@ -23,10 +23,9 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 	SideBarFactory.getBeerCategories().then(function(categories){
 
 		$scope.categories = categories;
-		
 		if(!$scope.beers)
 		{	
-			if($scope.user)
+			if(user && user.order.length !== 0)
 			{   
 				console.log($scope.user)
 				RecEngine.getUserFavorites(user).then(function(beerRec)

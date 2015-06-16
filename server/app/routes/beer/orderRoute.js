@@ -24,7 +24,6 @@ router.get('/', function(req,res,next){
 })
 
 //making a new order
-'MAKE SURE TO FIX THIS BECAUSE ITS IMPORTANT. YEAH!'
 
 router.post('/',function (req,res,next){
 	var _order
