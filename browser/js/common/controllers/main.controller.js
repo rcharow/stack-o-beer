@@ -2,17 +2,17 @@
 app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review, user, RecEngine){
 	
 	var loggedInUser;
-
 	$scope.user = user
-
 	//get all categories
-	SideBarFactory.getBeerCategories().then(function(categories){
+	SideBarFactory.getBeerCategories().then(function(categories)
+	{
 		$scope.categories = categories;
 	})
 
-	$scope.goToCategory= function(categoryID){
-
-		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers){
+	$scope.goToCategory= function(categoryID)
+	{
+		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers)
+		{
 			$scope.beers= beers
 			return
 		})
@@ -23,22 +23,30 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 	SideBarFactory.getBeerCategories().then(function(categories){
 
 		$scope.categories = categories;
-
-		if(!$scope.beers){
-			if($scope.user){
-				RecEngine.getUserFavorites(user).then(function(beerRec){
-					if(beerRec.length===0 || !beerRec){
+		
+		if(!$scope.beers)
+		{	
+			if($scope.user)
+			{   
+				console.log($scope.user)
+				RecEngine.getUserFavorites(user).then(function(beerRec)
+				{
+					console.log('BeerRec is', beerRec);
+					if(beerRec.length===0 || !beerRec)
+					{	console.log(' length zero')
 						$scope.goToCategory($scope.categories[0]._id)
 					}
-					else{
+					else
+					{
+						console.log('yessss')
 						$scope.beers = beerRec
 					}
 				})
 			}
-			else{
+			else
+			{ 
 				$scope.goToCategory($scope.categories[0]._id)
 			}
-
 		}
 
 	})
