@@ -58,8 +58,8 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 		if(!user){ user=null}
 		console.log('quant',$scope.quantity)
 		if ($scope.quantity>0)
-		{
-			UpdateCart.insertItem(thisBeer,user,$scope.quantity)
+		{   var quantity = $scope.quantity
+			UpdateCart.insertItem(thisBeer,user, quantity)
 			$modalInstance.close()
 		}
 	}
