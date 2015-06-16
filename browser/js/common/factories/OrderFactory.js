@@ -1,6 +1,11 @@
 app.factory('OrderFactory',function($http){
     return {
         makeOrder: function(user,cart) {
+
+            cart = cart.map(function(a){
+               return {productId: a._id, quantity: a.quantity}
+           })
+
             return $http.post('/api/order', {
                 userId: user._id, items: cart
             }).then(function (results) {

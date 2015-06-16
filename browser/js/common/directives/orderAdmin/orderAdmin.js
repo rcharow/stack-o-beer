@@ -25,6 +25,8 @@ app.directive('manageorderform',function(OrderFactory){
 	        			return order
 	        		else if (order.status === scope.orderFilter)
 	        			return order
+	        		else
+	        			return order
 
 	        	}
 
