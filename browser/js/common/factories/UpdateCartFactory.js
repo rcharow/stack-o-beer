@@ -3,38 +3,74 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 	var cartArray = []
 		//on the login event insert items from localStorage to DB Storage
     $rootScope.$on('auth-login-success', function()
-    {
+    {	
 		AuthService.getLoggedInUser().then(function (user)
 		{	
 			var getCartSession = localStorage.getItem("cartSession");
 			var cartObj = JSON.parse(getCartSession);
 			if (cartObj)
 			{
-				insertItem(cartObj,user).then(function()
-				{
-							console.log('merged CARTS!')
+				cartObj.forEach(function(item){
+					insertItem(item,user, item.quantity).then(function()
+					{
+								console.log('merged CARTS!')
+					})
+				})
 			}
-			)}
+			else 
+			{
+				var userCart =JSON.stringify(user.cart)
+				console.log('Nothing in session cart')
+				localStorage.setItem("cartSession", userCart)
+			}
 		})	
 	})
 
 	$rootScope.$on('auth-logout-success', function()
-	{
+	{	
+		console.log('localStorage cleared from MainController')
+		cartArray = [];
 		localStorage.clear()
 	})
 
     function insertItem(item, user, quantity)
     {	
     	var beer = item
-    	var duplicateItem = false;
     	//if user is not logged in or already logged in
 
-    	console.log('quantity is', quantity)
-    	if(!Array.isArray(beer))
-    	{
-    		cartArray.forEach(function (beerInCart,i)
+    	var duplicateItem = checkForDuplicateItem(beer, quantity, user)
+    		
+		if(duplicateItem === false)
+		{	
+			beer.quantity= quantity;
+			cartArray.push(beer)
+			console.log(cartArray)
+			var jsonStr = JSON.stringify(cartArray);
+			localStorage.setItem("cartSession", jsonStr);
+
+			if(user)
+		    	{   console.log('in the user')
+					return $http.put('/api/user', 
+					{user: user, item: beer}).then(function(response)
+						{  console.log('Response when updating is', response.data)
+							var jsonStr = JSON.stringify(response.data.cart);
+							localStorage.setItem("cartSession", jsonStr);
+							return response.data
+						}) 
+			}
+			
+		}
+	
+	}
+
+	function checkForDuplicateItem(beer, quantity, user){
+		console.log('User is', user);
+		var duplicateItem = false
+		if(user){ cartArray= user.cart}
+
+		cartArray.forEach(function (beerInCart)
     		{ 	
-    			if (beerInCart._id === item._id)
+    			if (beerInCart._id === beer._id)
     			{	
     				beerInCart.quantity += quantity;
     				duplicateItem = true;
@@ -42,32 +78,7 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 					localStorage.setItem("cartSession", jsonStr);
     			} 
     		})
-    		
-    		if(duplicateItem === false)
-			{	
-				beer.quantity= quantity;
-				cartArray.push(beer)
-				console.log(cartArray)
-				var jsonStr = JSON.stringify(cartArray);
-				localStorage.setItem("cartSession", jsonStr);
-				return
-			}
-		}
-    	//if being called from the event emmitter above
-    	else if (Array.isArray(beer))
-    	{
-    		cartArray=item
-    	}
-    	if(user)
-    	{
-			return $http.put('/api/user', 
-			{user: user, item: cartArray}).then(function(response)
-				{
-					var jsonStr = JSON.stringify(response.data.cart);
-					localStorage.setItem("cartSession", jsonStr);
-					return response.data
-				}) 
-		}
+		return duplicateItem
 	}
 
 	function getCart(user)
