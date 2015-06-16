@@ -13,7 +13,7 @@ router.put('/', function (req, res, next){
 		console.log('Req.body.item is',req.body.item)
 
 
-	User.findOneAndUpdate({_id: req.body.user._id}, {$push: {cart: {$each:req.body.item }}}).exec().then(function(user){
+	User.findOneAndUpdate({_id: req.body.user._id}, {cart: req.body.item}, {new: true}).exec().then(function(user){
 
 			res.send(user);
 	}).then(next, function(err){
@@ -21,7 +21,19 @@ router.put('/', function (req, res, next){
 	})
 	
 })
+router.put('/clear', function(req,res,next){
+	console.log(req.body)
+	User.findById(req.body._id)
+	.exec()
+	.then(function(user){
+		user.cart = []
+		return user.save()
+	})
+	.then(function(user){
+		res.json(user)
+	})
 
+})
 router.put('/admin',function (req,res,next){
 	User.findOneAndUpdate({_id: req.body._id}, {admin: req.body.admin, reset: req.body.reset},{new: true})
 	.exec()

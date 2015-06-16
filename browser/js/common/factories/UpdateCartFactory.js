@@ -12,9 +12,9 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 			{
 				insertItem(cartObj,user).then(function()
 				{
-					console.log('merged CARTS!')
-				})
+							console.log('merged CARTS!')
 			}
+			)}
 		})	
 	})
 
@@ -37,11 +37,7 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
     			if (beerInCart._id === item._id)
     			{	
     				beerInCart.quantity += quantity;
-
-
-    				console.log('beerInCart is', beerInCart)
     				duplicateItem = true;
-
     				var jsonStr = JSON.stringify(cartArray);
 					localStorage.setItem("cartSession", jsonStr);
     			} 
@@ -57,7 +53,6 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 				return
 			}
 		}
-    	
     	//if being called from the event emmitter above
     	else if (Array.isArray(beer))
     	{
