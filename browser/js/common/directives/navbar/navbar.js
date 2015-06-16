@@ -6,12 +6,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
 
-            scope.items = [
-                { label: 'Home', state: 'home.main' },
-                { label: 'User', state: 'user', auth: true }
-                
-            ];
-
             scope.adminItems = [
                 { label: 'Admin', state: 'admin'}
             ]

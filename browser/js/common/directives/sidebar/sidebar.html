@@ -1,5 +1,5 @@
-<ul class="side-nav fixed">
-
-	<li ng-repeat="category in categories" ng-click='goToCategory(category._id)'> {{category.cat_name}}</li>
-
-</ul>
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav fixed">
+		<li ng-repeat="category in categories" ng-click='goToCategory(category._id)'><a> {{category.cat_name}}</a></li>
+	</ul>
+</div>

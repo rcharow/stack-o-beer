@@ -1,18 +1,16 @@
-<nav class="navbar navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <!-- <fullstack-logo></fullstack-logo> -->
+            <a ui-sref = "home.main" class="navbar-brand icon"><i class="fa fa-beer fa-2x"></i></a>
+            <a ui-sref = "home.main" class="navbar-brand logo">HopShop</a>
         </div>
 
         <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
             <li ng-repeat="adminItem in adminItems" ng-show="isLoggedIn() && user.admin">
                 <a ui-sref-active="active" ui-sref="{{ adminItem.state }}">{{ adminItem.label }}</a>
             </li>
             <div class="btn-group" dropdown is-open="status.isopen">
-                <button type="button" ng-click = "updateCart()" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                <button type="button" ng-click = "updateCart()" class="btn btn-sm btn-default dropdown-toggle navbar-brand cart" dropdown-toggle ng-disabled="disabled">
                     <i class="fa fa-shopping-cart"></i>  <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
@@ -29,11 +27,15 @@
                 </ul>
             </div>
             <li>    
-                <form name="searchForm" ng-submit="beerInfo(result)">
-                    <input type="text" placeholder="Search" ng-model='result' typeahead="beer.name for beer in getBeer($viewValue)" typeahead-loading="loadingBeers" typeahead-on-select="beerInfo(result)">
+                <form class="navbar-form navbar-left" name="searchForm" ng-submit="beerInfo(result)">
+                <div class="form-group">
+                    <input class = "form-control" type="text" placeholder="Search" ng-model='result' typeahead="beer.name for beer in getBeer($viewValue)" typeahead-loading="loadingBeers" typeahead-on-select="beerInfo(result)">
+                    </div>
                     <i ng-show="loadingBeers" class="glyphicon glyphicon-refresh" ></i>
 
-                    <button type='submit'> Submit </button>
+                    <button class = "btn btn-sm btn-default" type='submit'>
+                        <i class="fa fa-search"></i>
+                    </button>
                 </form>
             </li>
         </ul>
