@@ -1,4 +1,4 @@
-app.directive('cartitem', function(OrderFactory){
+app.directive('cartitem', function(OrderFactory, $modal, Review, AuthService){
 	return {
 	        restrict: 'E',
 	        scope: {
@@ -30,6 +30,27 @@ app.directive('cartitem', function(OrderFactory){
 	        	scope.showEdit = function(){
 	        		scope.editing = true
 	        	}
-	        }
+	        	scope.goToBeer = function(beer){
+                var modalProduct = $modal.open({
+                    animation: scope.animationEnabled,
+                    templateUrl: '/js/common/templates/productDetails.html',
+                    controller: 'ProductController',
+                    size: 'lg',
+                    resolve: { 
+                        beer:function(){return beer},
+                        reviews: function () {
+                            return Review.getReviewsByBeerId(beer._id)
+                        },
+                        user: function (AuthService){
+                            return AuthService.getLoggedInUser()
+                            .then(function (user){
+                                return user
+                            })
+                        }
+                    }
+                })
+            }
+	        
 	    }
-	})
+    }
+})
