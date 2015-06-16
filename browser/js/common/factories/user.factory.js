@@ -27,6 +27,11 @@ app.factory ('User',function ($http){
 				console.log("error deleting user")
 				return 
 			})
+		},
+		clearCart: function(user){
+			return $http.put('/api/user/clear',user).then(function(results){
+				return results.data
+			})
 		}
 	}
 })

@@ -1,14 +1,14 @@
 app.factory('OrderFactory',function($http){
     return {
-        makeOrder: function(user,cart) {
-
+        makeOrder: function(user,cart,shipping) {
+            console.log("shipping info", shipping)
             cart = cart.map(function(a){
                return {productId: a._id, quantity: a.quantity}
            })
-
-            return $http.post('/api/order', {
-                userId: user._id, items: cart
-            }).then(function (results) {
+            var info = {items: cart, shipping: shipping}
+            if(user) info.userId = user._id
+            return $http.post('/api/order',info)
+            .then(function (results) {
                 return results.data
             })
         },

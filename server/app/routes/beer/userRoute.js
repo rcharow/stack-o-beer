@@ -21,7 +21,19 @@ router.put('/', function (req, res, next){
 	})
 	
 })
+router.put('/clear', function(req,res,next){
+	console.log(req.body)
+	User.findById(req.body._id)
+	.exec()
+	.then(function(user){
+		user.cart = []
+		return user.save()
+	})
+	.then(function(user){
+		res.json(user)
+	})
 
+})
 router.put('/admin',function (req,res,next){
 	User.findOneAndUpdate({_id: req.body._id}, {admin: req.body.admin, reset: req.body.reset},{new: true})
 	.exec()
