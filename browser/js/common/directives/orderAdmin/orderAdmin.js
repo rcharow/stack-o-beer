@@ -17,13 +17,15 @@ app.directive('manageorderform',function(OrderFactory){
 	        	scope.orderFilter = ""
 
 	        	scope.changeFilter = function(){
-	        		scope.$digest
+	        		scope.$digest()
 	        	}
 
 	        	scope.statusFilter = function (order){
 	        		if(scope.orderFilter === 'All')
 	        			return order
 	        		else if (order.status === scope.orderFilter)
+	        			return order
+	        		else
 	        			return order
 
 	        	}
