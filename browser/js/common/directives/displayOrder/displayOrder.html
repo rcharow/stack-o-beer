@@ -1,5 +1,5 @@
 <div>
-	<h4>Item: {{beer.name}}</h4>
+	<h4 ng-click="goToBeer(beer)">Item: {{beer.name}}</h4>
 	 <input type="text" ng-show = "editing" ng-model = "quantity" value = "{{beer.quantity}}"></input>
     <h6 ng-show = "!editing"> Quantity: {{beer.quantity}}</h6> 
     <button class = "btn btn-default" ng-show = "editing" ng-click = "submit(beer)">Submit</button>

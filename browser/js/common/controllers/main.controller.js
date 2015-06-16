@@ -1,8 +1,9 @@
 
-app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review, user, RecEngine){
+app.controller('MainController',function($scope, $modal, SideBarFactory, DisplayBeerFactory, AuthService, $rootScope, UpdateCart, Review, user, RecEngine,$state){
 	
 	var loggedInUser;
 	$scope.user = user
+	$rootScope.$state = $state;
 	//get all categories
 	SideBarFactory.getBeerCategories().then(function(categories)
 	{
