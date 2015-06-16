@@ -1,5 +1,5 @@
 
-app.controller('ProductController', function($scope,$modalInstance,AuthService,Review,beer,reviews,user, UpdateCart){
+app.controller('ProductController', function($scope,$modalInstance,AuthService,Review,beer,reviews,user, UpdateCart, $location){
 	$scope.beer = beer
 	$scope.quantity = 0
     $scope.beer.abv = Number(beer.abv.toFixed(2))
@@ -14,6 +14,8 @@ app.controller('ProductController', function($scope,$modalInstance,AuthService,R
 		detail: true,
 		edit: false
 	}
+
+	$scope.editButtons = $location.path() ==='/browse';
 	
 	$scope.reviews = reviews
 
