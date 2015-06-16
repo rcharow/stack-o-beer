@@ -15,7 +15,7 @@ app.directive('cartitem', function(OrderFactory){
 	        				localStorage.setItem('cartSession',JSON.stringify(scope.cartObj))
 	        			}
 	        		}
-	        		OrderFactory.updateOrder(cartObj)
+	        		OrderFactory.updateOrder(scope.cartObj)
 	        	}
 	        	scope.submit = function(beer){
 	        		scope.beer.quantity = scope.quantity

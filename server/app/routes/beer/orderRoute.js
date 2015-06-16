@@ -24,19 +24,41 @@ router.get('/', function(req,res,next){
 })
 
 //making a new order
-router.post('/',function(req,res,next){
-	Order.create(req.body).then(function(order){
-		User.findById(order.userId).exec().then(function(user){
-			console.log('User was Found', user)
-			user.order.push(order._id)
-			user.save();
+'MAKE SURE TO FIX THIS BECAUSE ITS IMPORTANT. YEAH!'
 
-		}, function(err){console.log(err, 'Filaed to find User')})
-		.then(function(order){
-			res.send(order)
-		})
-	},function(err){console.log(err, 'failed to create order')})
+router.post('/',function (req,res,next){
+	var _order
+	Order.create(req.body)
+	.then(function(order){
+		_order = order
+		console.log("in create",_order)
+		var data = {order: order}
+		if(order.userId)
+			data.userId = order.userId
+		return data
+	})
+	.then(function (data){
+		if(data.userId){
+			console.log("in if statement")
+			return User.findById(data.userId)
+			.exec()
+			.then(function(user){
+				console.log("in user then")
+				user.order.push(data.order._id)
+				return user.save()
+			}, function(err){
+				return next(err)
+			})
+		}
+
+	})
+	.then(function(){
+		res.json(_order)
+	},function(err){
+		return next(err)
+	})
 })
+
 
 //update something about an order
 router.put('/',function(req,res,next){

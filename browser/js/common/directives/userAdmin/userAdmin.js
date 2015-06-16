@@ -62,7 +62,6 @@ app.directive('edituserform',function (User){
 	        		User.deleteUser(scope.user._id)
 	        		.then(function (user){
 	        			if(user){
-	        				debugger
 	        				for(var i=0;i<scope.users.length;i++){
 	        					if(scope.users[i]._id===user._id){
 	        						scope.users.splice(i,1)

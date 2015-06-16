@@ -2,15 +2,35 @@
     <h3 class="modal-title">Hello {{user.email}}, This is Your Order</h3>
 </div>
 <div class="modal-body">
-    <ul>
-        <li ng-repeat="item in cartObj">
-            <a>{{ item.name }}</a>
-           	Quantity: {{item.quantity}}
-        </li>
-    </ul>
+    <div ng-show="!shipping">
+        <ul>
+            <li ng-repeat="item in cartObj">
+                <a>{{ item.name }}</a>
+               	Quantity: {{item.quantity}}
+                Price: {{item.price}}
+            </li>
+        </ul>
+    </div>
+    <div ng-show="shipping">
+        <form>
+            <label for="first">First Name</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.first" name="first"> 
+             <label for="last">Last Name</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.last" name="last">
+             <label for="streetAddress">Street Address</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.streetAddress" name="streetAddress">
+             <label for="city">City Name</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.city" name="city">
+             <label for="state">State</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.state" name="state">
+             <label for="zip">Zip Code</label>      
+            <input type="text" class="form-control" ng-model="shippingInfo.zip" name="zip">    
+        </form>
+    </div>
 </div>
 <div class="modal-footer">
 	<h3>Your Total is: {{total}}</h3>
-    <button class="btn btn-primary" ng-click="comfirm(user,cartObj)">Comfirm Order</button>
+    <button class="btn btn-primary" ng-show="!shipping" ng-click="ship()">Shipping Info</button>
+    <button ng-show="shipping" class="btn btn-success" ng-click="confirm(user,cartObj)">Submit Order</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>
