@@ -14,6 +14,7 @@ app.controller('checkoutController',function($scope, AuthService, OrderFactory,$
             $scope.total += (item.price *item.quantity)
         })
     }
+
     $scope.back = function(){
         $state.go('home.main')
     }
@@ -36,7 +37,8 @@ app.controller('checkoutController',function($scope, AuthService, OrderFactory,$
     }
 
     $scope.displayOrder = function (user,cart){
-        if (!cart){
+
+        if (!cart.length){
             $scope.error = "You have nothing in your cart to checkout."
         }else{
             var modalProduct = $modal.open({
