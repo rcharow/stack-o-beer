@@ -13,7 +13,7 @@ router.put('/', function (req, res, next){
 		console.log('Req.body.item is',req.body.item)
 
 
-	User.findOneAndUpdate({_id: req.body.user._id}, {$push: {cart: {$each:req.body.item }}}).exec().then(function(user){
+	User.findOneAndUpdate({_id: req.body.user._id}, {cart: req.body.item}, {new: true}).exec().then(function(user){
 
 			res.send(user);
 	}).then(next, function(err){

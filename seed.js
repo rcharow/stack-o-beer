@@ -39,6 +39,11 @@ var seedUsers = function () {
         {
             email: 'obama@gmail.com',
             password: 'potus'
+        },
+        {
+            email: 'hops@gmail.com',
+            password: 'hops',
+            admin: true
         }
     ];
 

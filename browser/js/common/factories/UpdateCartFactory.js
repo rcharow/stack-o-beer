@@ -7,6 +7,7 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 			var getCartSession = localStorage.getItem("cartSession");
 			var cartObj = JSON.parse(getCartSession);
 			if (cartObj){
+				debugger
 				insertItem(cartObj,user).then(function(){
 							console.log('merged CARTS!')
 			})}
@@ -19,7 +20,7 @@ app.factory('UpdateCart', function($http, $rootScope, AuthService){
 
     function insertItem(item, user, quantity){
     	console.log('Testing Testing',typeof item)
-
+    	debugger
     	//if just a single object
     	if(!Array.isArray(item)){
     		console.log('an object')
