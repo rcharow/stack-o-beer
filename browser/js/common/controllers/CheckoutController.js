@@ -5,10 +5,15 @@ app.controller('checkoutController',function($scope, AuthService, OrderFactory,$
     $scope.total = 0
     $scope.quantity = undefined
     $scope.editing = false
-    console.log($scope.cartObj)
-    $scope.cartObj.forEach(function(item){
-        $scope.total += (item.price *item.quantity)
-    })
+
+    $scope.error = undefined
+
+
+    if ($scope.cartObj){
+        $scope.cartObj.forEach(function(item){
+            $scope.total += (item.price *item.quantity)
+        })
+    }
     $scope.back = function(){
         $state.go('home.main')
     }
@@ -31,20 +36,24 @@ app.controller('checkoutController',function($scope, AuthService, OrderFactory,$
     }
 
     $scope.displayOrder = function (user,cart){
-        var modalProduct = $modal.open({
-            animation: $scope.animationEnabled,
-            templateUrl: '/js/common/templates/orderDetails.html',
-            controller: 'orderController',
-            size: 'lg',
-            resolve: { 
-                user: function (AuthService){
-                    return AuthService.getLoggedInUser()
-                    .then(function (user){
-                        return user
-                    })
+        if (!cart){
+            $scope.error = "You have nothing in your cart to checkout."
+        }else{
+            var modalProduct = $modal.open({
+                animation: $scope.animationEnabled,
+                templateUrl: '/js/common/templates/orderDetails.html',
+                controller: 'orderController',
+                size: 'lg',
+                resolve: { 
+                    user: function (AuthService){
+                        return AuthService.getLoggedInUser()
+                        .then(function (user){
+                            return user
+                        })
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
 })
