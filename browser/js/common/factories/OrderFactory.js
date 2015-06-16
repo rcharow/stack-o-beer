@@ -3,6 +3,7 @@ app.factory('OrderFactory',function($http){
         makeOrder: function(user,cart,shipping) {
             console.log("shipping info", shipping)
             cart = cart.map(function(a){
+                debugger
                return {productId: a._id, quantity: a.quantity}
            })
             var info = {items: cart, shipping: shipping}
