@@ -50,6 +50,8 @@ ul.side-nav.fixed li {
   .caption-img {
     margin-top: 20px;
   }
+  padding-left:10%;
+  margin-top: 1%
 }
 
 .carousel-indicators li { visibility: hidden; }
@@ -147,10 +149,22 @@ ul.review-list {
 }
 .col-lg-10{
   float:right;
+  padding:0;
 }
 .col-md-10{
   float:right;
+  padding:0;
 }
 .col-sm-10{
   float:right;
+  padding:0;
 }
+
+#display{
+  padding-left:5%;
+  .carousel-inner{
+    background-color = #0193b7;
+  }
+}
+
+
