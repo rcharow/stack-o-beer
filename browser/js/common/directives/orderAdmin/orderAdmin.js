@@ -21,7 +21,6 @@ app.directive('manageorderform',function(OrderFactory){
 	        	}
 
 	        	scope.statusFilter = function (order){
-	        		debugger
 	        		if(scope.orderFilter === 'All')
 	        			return order
 	        		else if (order.status === scope.orderFilter)

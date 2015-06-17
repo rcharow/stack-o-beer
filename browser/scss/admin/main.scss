@@ -1,0 +1,40 @@
+
+.admin-body{
+	font-family: "Raleway", sans-serif;
+	color: #fefefe;
+	li{
+		color: #856941;
+		margin-left: 5px;
+	}
+
+	.col-sm-6 {
+		font-family: "Raleway", sans-serif;
+		color: #fefefe;
+		
+		label, input{
+			font-family: "Raleway", sans-serif;
+			font-weight: 400;
+			color: #fefefe;
+		}
+		input {
+			color: #856941;
+		}
+	}
+	.admin-select {
+		color:#856941;
+	}
+
+	.btn-default,.btn-default.dropdown-toggle {
+		margin-top: 20px;
+		background-color: #d1c5b7;
+		color:#856941;
+	}
+
+	table, select, .panel-heading{
+		color: #856941;
+	}
+
+	select.form-control.update{
+		margin-left: 10px;
+	}
+}
