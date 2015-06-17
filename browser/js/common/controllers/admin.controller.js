@@ -80,7 +80,6 @@ app.controller('AdminController', function ($scope,DisplayBeerFactory,BeerDetail
 		
 		BeerDetails.upsertBeer(newBeer,action)
 		.then(function(result){
-			debugger
 			var m = ''
 			if($scope.adminAction.edit) m = 'updated'
 			if($scope.adminAction.add)	m = 'added'
