@@ -1,0 +1,53 @@
+.modal-content{
+	background-color: #856941;
+}
+
+.modal-header {
+	
+
+	.modal-title{
+		font-family: 'Bitter',serif;
+		font-weight: 800;
+		color: #063e53;
+	}
+	h4 {
+		font-family: 'Raleway',sans-serif;
+	}
+
+
+}
+
+.modal-body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #d1c5b7;
+
+	img {
+		padding-right: 20px; 
+	}
+
+	.modal-details{
+		.btn-default {
+			margin-right: 10px;
+		}
+
+		.review-list{
+			padding-left: 10px;
+			margin-bottom: 20px;
+		}
+
+		textarea.form-control{
+			width: 350px;
+			// height: 150px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.modal-footer {
+	font-family: 'Raleway',sans-serif;
+
+	.fa-cart-plus{
+		color: #0193b7;
+	}
+}
+
