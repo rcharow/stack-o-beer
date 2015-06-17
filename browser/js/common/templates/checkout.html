@@ -1,12 +1,12 @@
-<div>
-    <button class = "btn btn-warning" ng-click = "back()">Back to Shopping</button>
+<div id = "checkout">
+    <button class = "btn btn-default back" ng-click = "back()">Back to Shopping</button>
     <div class = "container">
         <ul>
             <cartitem beer="beer" ng-repeat="beer in cartObj"></cartitem>
         </ul>
 
         <h4>Your Total is: {{total}}</h4>
-        <button class = "btn btn-success" ng-click = "displayOrder(user,cartObj)">Check Out</button>
+        <button class = "btn next" ng-click = "displayOrder(user,cartObj)">Check Out</button>
 		<alert type = "warning" ng-show ="error">{{error}}</alert>
 
     </div>
