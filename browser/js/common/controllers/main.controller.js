@@ -12,6 +12,13 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 
 	$scope.goToCategory= function(index, categoryID)
 	{	
+		console.log('hi')
+		debugger
+		$scope.categories.forEach(function(cat){
+			if (cat.clicked){
+				cat.clicked = false
+			}
+		})
 		$scope.categories[index].clicked = true
 		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers)
 		{
