@@ -1,5 +1,11 @@
-<ul class="browse-list">
+<!-- <ul class="browse-list">
 	<li ng-repeat="beer in beers" class="pull-right" ng-click="displayBeer(beer)">
 		{{beer.name}}
 	</li>
-</ul>
+</ul> -->
+
+<table class="browse-list browse-table">
+	<tr ng-repeat="row in rows">
+		<td ng-repeat="beer in row" ng-click="displayBeer(beer)">{{beer.name}}</td>
+	</tr>
+</table>

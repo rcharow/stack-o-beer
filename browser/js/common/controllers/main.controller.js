@@ -13,7 +13,6 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 	$scope.goToCategory= function(index, categoryID)
 	{	
 		console.log('hi')
-		debugger
 		$scope.categories.forEach(function(cat){
 			if (cat.clicked){
 				cat.clicked = false
@@ -22,6 +21,20 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 		$scope.categories[index].clicked = true
 		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers)
 		{
+			var rows = []
+			var row = []
+			var i = 0
+			beers.forEach(function(beer,j){
+				row.push(beer)
+				i++
+				if(i === 4 || j===beers.length-1){
+					rows.push(row)
+					row = []
+					i=0
+				}
+				
+			})
+			$scope.rows = rows
 			$scope.beers= beers
 			return
 		})
@@ -46,14 +59,28 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 					}
 					else
 					{
-						console.log('yessss')
+						var rows = []
+						var row = []
+						var i = 0
+						beerRec.forEach(function(beer,j){
+							row.push(beer)
+							i++
+							if(i === 4 || j===beerRec.length-1){
+								rows.push(row)
+								row = []
+								i=0
+							}
+							
+						})
+						$scope.rows = rows
 						$scope.beers = beerRec
 					}
 				})
 			}
 			else
 			{ 
-				$scope.goToCategory($scope.categories[0]._id)
+				debugger
+				$scope.goToCategory(0,$scope.categories[0]._id)
 			}
 		}
 

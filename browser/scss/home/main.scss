@@ -1,3 +1,7 @@
+
+body {
+  height: 100vh;
+}
 #home {
   fullstack-logo {
     padding-top: 30px;
@@ -155,17 +159,20 @@ ul.review-list {
   background-color: #063e53;
 }
 .col-lg-10{
+  @import clearfix;
   float:right;
   height: 100vh;
   padding:0;
 }
 .col-md-10{
+  @import clearfix;
   float:right;
   height: 100vh;
 
   padding:0;
 }
 .col-sm-10{
+  @import clearfix;
   float:right;
   height: 100%;
   padding:0;
@@ -181,3 +188,12 @@ ul.review-list {
   color: #d1c5b7;
 }
 
+.browse-table {
+  width: 80%;
+  margin: 0 auto;
+  td {
+    font-family: "Bitter", serif;
+    padding-top: 20px;
+    padding-right: 30px;
+  }
+}
