@@ -140,23 +140,34 @@ ul.review-list {
   width: 50%;
 }
 
+.admin-body{
+  @include clearfix;
+  height: 100vh;
+}
+
 .panel {
   margin-top: 20px;
 }
 .body{
   @include clearfix;
+  height: 100vh;
   margin-top:60px;
+  background-color: #063e53;
 }
 .col-lg-10{
   float:right;
+  height: 100vh;
   padding:0;
 }
 .col-md-10{
   float:right;
+  height: 100vh;
+
   padding:0;
 }
 .col-sm-10{
   float:right;
+  height: 100%;
   padding:0;
 }
 
