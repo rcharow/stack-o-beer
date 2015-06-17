@@ -1,11 +1,12 @@
 .navbar-inverse {
-  border-color:856941;
   display: block;
   background: #753100;
   font-family: "Raleway", sans-serif;
 
+  border-color:#856941;
   height:60px;
   background-color:#856941;
+  
   a {
     color: white;
     &:hover {
@@ -15,6 +16,7 @@
   .container{
     margin-left:0;
     margin-right:0;
+    width:100%
   }
   .form-control{
     float:left;
@@ -73,6 +75,10 @@
     color:#d1c5b7;
     margin-left: 5px;
     border-radius: 24px;
+    font-family: 'Raleway', sans-serif;
+  }
+  #login{
+    font-family: 'Raleway', sans-serif;
   }
 
  .logout-button {

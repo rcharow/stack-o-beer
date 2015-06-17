@@ -1,8 +1,7 @@
- <div style="height: 305px">
+ <div id = "display" style="height: 305px">
     <carousel interval="myInterval">
       <slide ng-repeat="beer in beers" active="beer.active" ng-click="displayBeer(beer)">
-        <!-- <img ng-src="http://placekitten.com/g/408/287" style="margin:auto;"> -->
-        <!-- <img ng-src="http://dummyimage.com/408x287/000000&text=." style="margin:auto;"> -->
+
         <img ng-src="http://fillmurray.com/400/287" class="caption-img" style = "margin:auto">
         <div class="carousel-caption">
           <h4>{{beer.name}}</h4>

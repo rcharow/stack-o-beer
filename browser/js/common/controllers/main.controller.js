@@ -10,8 +10,9 @@ app.controller('MainController',function($scope, $modal, SideBarFactory, Display
 		$scope.categories = categories;
 	})
 
-	$scope.goToCategory= function(categoryID)
+	$scope.goToCategory= function(index, categoryID)
 	{	
+		$scope.categories[index].clicked = true
 		DisplayBeerFactory.getBeerByCategory(categoryID).then(function(beers)
 		{
 			$scope.beers= beers
