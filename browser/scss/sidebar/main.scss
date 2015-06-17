@@ -19,27 +19,20 @@ $accentColor:#FF00DC;
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled {
-    padding-left: 250px;
-}
 
 #sidebar-wrapper {
     z-index: 1000;
-    position: fixed;
-    left: 250px;
+    position: absolute;
+    left: 0;
     width: 0;
-    height: 100%;
-    margin-left: -250px;
+    height: 100vh;
+    margin-left: 0;
     overflow-y: auto;
     background: #d1c5b7;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
 }
 
 #page-content-wrapper {
@@ -58,7 +51,7 @@ $accentColor:#FF00DC;
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -67,17 +60,23 @@ $accentColor:#FF00DC;
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
-}
 
+}
+.focus{
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+}
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: #735d41;
+    font-family: 'Raleway', sans-serif;
+    font-weight:300;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #0193b7;
     background: rgba(255,255,255,0.2);
 }
 
@@ -111,7 +110,7 @@ $accentColor:#FF00DC;
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        width: 100%;
     }
 
     #wrapper.toggled #sidebar-wrapper {
